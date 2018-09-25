@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf in action</title>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<h3>[[${userModel.title}]]</h3>
+<a th:href="@{~/users/modify/}+${userModel.user.id}">修改信息</a>
+<p>ID：[[${userModel.user.id}]]</p>
+<p>Name：[[${userModel.user.name}]]</p>
+<p>Email：[[${userModel.user.email}]]</p>
+<p>Age：[[${userModel.user.age}]]</p>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
