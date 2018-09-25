@@ -1,5 +1,32 @@
 # 基于 Spring Boot 技术栈构建企业级博客系统的开发记录
 
+<!-- TOC -->
+
+- [基于 Spring Boot 技术栈构建企业级博客系统的开发记录](#基于-spring-boot-技术栈构建企业级博客系统的开发记录)
+    - [一、 使用 Gradle / Spring Initializer 搭建 Spring Boot 运行环境](#一-使用-gradle--spring-initializer-搭建-spring-boot-运行环境)
+        - [1.1 安装 Gradle 环境](#11-安装-gradle-环境)
+        - [1.2 使用 Spring Initializer 快速生成 Spring Boot 应用](#12-使用-spring-initializer-快速生成-spring-boot-应用)
+        - [1.3 项目结构](#13-项目结构)
+        - [1.4 自定义存储仓库](#14-自定义存储仓库)
+        - [1.5 编写程序代码及测试用例](#15-编写程序代码及测试用例)
+        - [1.6 以 Gradle / Wrapper 编译项目](#16-以-gradle--wrapper-编译项目)
+        - [1.7 Gradle 项目运行的三种方式](#17-gradle-项目运行的三种方式)
+    - [二、 Thymeleaf 模板引擎](#二-thymeleaf-模板引擎)
+        - [2.1 Thymeleaf](#21-thymeleaf)
+        - [2.2 标准方言（语法）](#22-标准方言语法)
+        - [2.4 集成 Spring Boot](#24-集成-spring-boot)
+        - [2.5 Thymeleaf 实战](#25-thymeleaf-实战)
+    - [三、 Spring Data JPA 数据持久化](#三-spring-data-jpa-数据持久化)
+        - [3.1 JPA 简介](#31-jpa-简介)
+        - [3.2 JPA 核心概念](#32-jpa-核心概念)
+        - [3.3 Spring Data JPA 使用概括](#33-spring-data-jpa-使用概括)
+        - [3.4. Spring Data JPA / Hibernate / Spring Boot 集成](#34-spring-data-jpa--hibernate--spring-boot-集成)
+        - [3.5 数据持久化实战](#35-数据持久化实战)
+            - [3.5.1 H2 内存数据库](#351-h2-内存数据库)
+            - [3.5.2 MySql 物理数据库](#352-mysql-物理数据库)
+
+<!-- /TOC -->
+
 ## 一、 使用 Gradle / Spring Initializer 搭建 Spring Boot 运行环境
 
 ###  1.1 安装 Gradle 环境
