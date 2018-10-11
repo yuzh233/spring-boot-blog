@@ -32,6 +32,8 @@
     - [七、权限管理](#七权限管理)
         - [7.1 Spring Security](#71-spring-security)
         - [7.2 与 Spring Boot 集成](#72-与-spring-boot-集成)
+    - [八、博客系统 —— 整体框架搭建](#八博客系统--整体框架搭建)
+        - [8.1 API](#81-api)
 
 <!-- /TOC -->
 
@@ -1314,6 +1316,42 @@ public class BlogController {
 
 ## 六、需求分析 / 原型设计
 
+需求/核心功能：
+
+![](blog-img/image_24.png)
+
+用户管理：
+
+![](blog-img/image_25.png)
+
+安全设置：
+
+![](blog-img/image_26.png)
+
+博客管理：
+
+![](blog-img/image_27.png)
+
+评论管理：
+
+![](blog-img/image_28.png)
+
+点赞管理：
+
+![](blog-img/image_34.png)
+
+分类管理：
+
+![](blog-img/image_29.png)
+
+标签管理：
+
+![](blog-img/image_33.png)
+
+首页管理：
+
+![](blog-img/image_30.png)
+
 ## 七、权限管理
 
 **角色**
@@ -1451,3 +1489,131 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 }
 ```
+
+## 八、博客系统 —— 整体框架搭建
+
+### 8.1 API
+
+**index：主页，包含最新、最热文章，最热标签，最热用户等**
+
+- `/blogs`: [get]
+    - order：排序类型，new/hot，默认是 new
+    - keyword：搜索关键字。博客的标签，即为关键字。
+    - async：是否为异步请求页面
+    - pageIndex
+    - pageSize
+
+**user space：用户主页空间**
+
+- `/u/{username}`: [get] 具体某个用户的主页
+    - username 用户账号
+
+- `/u/{username}/profile`: [get] 获取个人设置页面
+    - username 用户账号
+
+- `/u/{username}/profile`: [post] 保存个人设置页面
+    - username 用户账号
+    - User 待保存的对象
+ 
+ - `/u/{username}/avatar`: [get] 获取个人头像
+    - username 用户账号
+
+- `/u/{username}/avatar`: [post] 保存个人头像
+    - username 用户账号
+
+- `/u/{username}/blogs`: [get] 查询用户博客
+    - order：排序类型，new/hot，默认是 new
+    - catalog：博客分类 ID，默认为空
+    - keyword：搜索关键字。博客的标签，即为关键字。
+    - async：是否为异步请求页面
+    - pageIndex
+    - pageSize
+
+- `/u/{username}/blogs/edits`: [get] 获取新增博客页面
+    - username 用户账号
+
+- `/u/{username}/blogs/edit`: [post] 新增、编辑博客页面
+    - username 用户账号
+    - Blog 待保存的博客对象
+
+- `/u/{username}/blogs/edit/{id}`: [get] 获取编辑博客的页面
+    - username 用户账号
+    - id 博客ID
+
+- `/u/{username}/blogs/edit/{id}`: [delete] 删除博客
+    - username 用户账号
+    - id 博客ID
+
+**login：登陆**
+
+- `/login`: [get] 获取登陆页面
+
+- `/login`: [post] 登陆
+    - username
+    - password
+    - remember-me 是否记住我
+
+- `/register`: [get] 获取注册页面
+
+- `/register`: [post] 注册成功跳转至登陆页面
+    - User 待保存的用户对象
+
+**users：用户管理**
+
+- `/users`: [get] 用户列表
+    - async
+    - pageIndex
+    - pageSize
+    - name 用户名称关键字
+
+- `/users/add`: [get] 获取添加用户页面
+
+- `/users/add`: [post] 保存添加的用户
+    - User
+    - authorityId 角色ID
+
+- `/users/{id}`: [delete] 删除用户
+    - id
+
+- `/users/edit/{id}`: [get] 获取某个具体用户编辑页面
+    - id
+
+**comments：评论管理**
+
+- `/comments`: [get] 获取评论列表
+    - blogid 博客id
+
+- `/comments`: [post] 保存评论
+    - blogid 博客id
+    commentContent 评论内容
+
+- `/comments/{id}`: [delete] 删除评论
+    - blogid 博客id
+    - id 评论id
+
+**votes：点赞管理**
+
+- `/votes`: [post] 保存点赞
+    - blogid 博客id
+
+- `/votes/{id}`: [delete] 删除点赞 
+    - blogid 博客id
+    - id 点赞id
+
+**catalogs：分类管理**
+
+- `/catalogs`: [get] 获取用户博客的分类列表
+    - username 用户账号
+
+- `/catalogs`: [post] 保存用户博客的分类
+    - username 用户账号
+    - CatalogVO 包含 username、Catalog
+
+- `/catalogs/edit`: [get] 获取编辑分类界面
+
+- `/catalogs/edit/{id}`: [get] 获取某ID分类编辑的分类界面
+
+- `/catalogs/{id}`: [delete] 删除分类
+    - id 分类ID
+    - username 用户账号
+
