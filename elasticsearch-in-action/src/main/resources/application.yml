@@ -1,0 +1,11 @@
+spring:
+  data:
+    elasticsearch:
+      # \u670D\u52A1\u5730\u5740
+      cluster-nodes: localhost:9300
+
+      # \u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4
+      properties:
+        transport:
+          tcp:
+            connect_timeout\uFF1A120

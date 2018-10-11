@@ -1,0 +1,23 @@
+spring:
+  # \u6A21\u677F\u5F15\u64CE
+  thymeleaf:
+    encoding: UTF-8
+    cache: false
+    mode: HTML5
+
+  # \u4F7F\u7528 H2 \u63A7\u5236\u53F0
+  h2.console.enabled: true
+
+  # \u6570\u636E\u6E90
+  datasource:
+    url: jdbc:mysql://localhost/blog?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # JPA
+  jpa:
+    show-sql: true
+    hibernate:
+      # \u6BCF\u6B21\u542F\u52A8\u90FD\u4F1A\u5220\u9664\u4E4B\u524D\u7684\u8868\u7ED3\u6784\u548C\u6570\u636E\u5E76\u91CD\u65B0\u751F\u6210\u65B0\u7684\u8868\u7ED3\u6784
+      ddl-auto: create-drop

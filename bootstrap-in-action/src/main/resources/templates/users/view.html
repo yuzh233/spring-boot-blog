@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="~{fragments/header :: header}"></head>
+<body>
+<div class="container">
+    <h3 class="mt-5">[[${userModel.title}]]</h3>
+    <a class="btn btn-info mt-2" th:href="@{~/users/modify/}+${userModel.user.id}">修改信息</a>
+    <table class="table table-hover mt-3">
+        <tr>
+            <td>ID</td>
+            <td>[[${userModel.user.id}]]</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>[[${userModel.user.name}]]</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>[[${userModel.user.email}]]</td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>[[${userModel.user.age}]]</td>
+        </tr>
+    </table>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

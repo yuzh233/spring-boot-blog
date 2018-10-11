@@ -14,6 +14,7 @@
     - [二、 Thymeleaf 模板引擎](#二-thymeleaf-模板引擎)
         - [2.1 Thymeleaf](#21-thymeleaf)
         - [2.2 标准方言（语法）](#22-标准方言语法)
+        - [2.3 表达式基本对象](#23-表达式基本对象)
         - [2.4 集成 Spring Boot](#24-集成-spring-boot)
         - [2.5 Thymeleaf 实战](#25-thymeleaf-实战)
     - [三、 Spring Data JPA 数据持久化](#三-spring-data-jpa-数据持久化)
@@ -24,6 +25,13 @@
         - [3.5 数据持久化实战](#35-数据持久化实战)
             - [3.5.1 H2 内存数据库](#351-h2-内存数据库)
             - [3.5.2 MySql 物理数据库](#352-mysql-物理数据库)
+    - [四、Elastic Search 全文搜索](#四elastic-search-全文搜索)
+        - [4.1 集成 Spring Boot](#41-集成-spring-boot)
+    - [五、集成 BootStrap](#五集成-bootstrap)
+    - [六、需求分析 / 原型设计](#六需求分析--原型设计)
+    - [七、权限管理](#七权限管理)
+        - [7.1 Spring Security](#71-spring-security)
+        - [7.2 与 Spring Boot 集成](#72-与-spring-boot-集成)
 
 <!-- /TOC -->
 
@@ -237,22 +245,17 @@ Java 模板引擎。能够处理 Html / XML / JavaScript / CSS / 甚至纯文本
     <span data-th-text="…">
     符合html5标准，不需要引入命名空间
 
-**变量表达式**
+**变量表达式 - ${…}**
 
-${…}
 
 	<span th:text="${book.author.name}">
 
-**消息表达式（i8n / 国际化）**
-
-#{…}
+**消息表达式（i8n / 国际化）- #{…}**
 
     <th th:text="#{header.address.city}">…</th>
     <th th:text="#{header.address.country}">…</th>
 
-**选择表达式**
-
-*{…}
+**选择表达式 - `*{…}`**
 
     <div th:object="${book}">
         ...
@@ -262,9 +265,7 @@ ${…}
 
 与变量表达式的区别：它是在当前选择的对象而不是整个上下文变量映射上执行。`${book}`  取的是整个上下文中的变量，而 `*{title}` 是在当前 `${book}`  里边的变量。因此变量表达式一定程度上提高了效率。
 
-**链接表达式**
-
-@{…}
+**链接表达式 - @{…}**
 
 链接表达式可以是相对的，在这种情况下，应用程序上下文将不会作为 URL 的前缀
 
@@ -334,9 +335,7 @@ ${…}
 
     <span th:class="${row.even} ? ‘even' : ‘odd' "></span>
 
-**无操作**
-
-__
+**无操作 - __**
 
     <span th:text="${user.name} ? : __">no user authenticated</span>
 
@@ -415,9 +414,9 @@ CSS 内联：`th:inline="css"`
 
 ### 2.3 表达式基本对象
 
- #ctx：上下文对象。是 `org.thymeleaf.context.IContext` 或者 `org.thymeleaf.context.IWebContext` 的实现。
+`#ctx`：上下文对象。是 `org.thymeleaf.context.IContext` 或者 `org.thymeleaf.context.IWebContext` 的实现。
 
-#locale： 直接访问与 `java.util.Locale` 关联的当前的请求。
+`#locale`： 直接访问与 `java.util.Locale` 关联的当前的请求。
 
     ${#ctx.locale}
     ${#ctx.bariableNames}
@@ -428,6 +427,7 @@ CSS 内联：`th:inline="css"`
     ${#ctx.servletContext}
     
     ${#locale}
+    
 **Request/session 等属性**
 
 param：用于检索请求参数
@@ -453,11 +453,11 @@ application：用于检索application/servlet上下文属性
 
 **Web上下文对象**
 
-#request：直接访问与当前请求关联的 HttpServletRequest 对象
+`#request`：直接访问与当前请求关联的 HttpServletRequest 对象
 
-#session：直接访问与当前请求关联的 HttpSession 对象
+`#session`：直接访问与当前请求关联的 HttpSession 对象
 
-#servletContext：直接访问与当前请求关联的 servletContext 对象
+`#servletContext`：直接访问与当前请求关联的 servletContext 对象
 
 	${#request.getAttribute('foo')}
 	${#request.getParameter('foo')}
@@ -993,3 +993,461 @@ spring:
 
 **在实际场景中使用 MySql 这种大型数据库，在开发测试过程中建议使用 H2 这种内存数据库，提高开发效率。**
 
+## 四、Elastic Search 全文搜索
+
+**概念**：全文搜索是一种将文件中所有文本与搜索项匹配的文字资料检索方法
+
+**实现原理**：
+
+- 建立文本库：搜索的数据源
+
+- 建立索引：提取规律，以便快速查找。
+
+- 执行搜索：用户请求
+
+- 过滤结果：对搜索结果处理
+
+**Elastic Search 是什么**：
+
+- 高度可扩展的开源全文搜索和分析引擎
+
+- 快速、近实时地对大数据进行存储、搜索和分析
+
+- 用来支持又复杂的数据搜索需求的企业级应用
+
+**Elastic Search 特点**：
+
+- 分布式
+
+- 高可用
+
+- 多 API
+
+- 面向文档
+
+- 异步写入
+
+- 近实时
+
+- 基于 Lucene 搜索引擎
+
+- 遵循 Apache 协议
+
+**Elastic Search 核心概念**：
+
+- 近实时：根据刷新策略定期刷新索引到索引库，在存入索引库和读取索引库数据效率之间折中。
+
+- 集群：一个或多个的节点的集合，用于保存应用的全部数据并提供基于全部节点的集成式搜索功能。
+
+- 节点：集群中的单台服务器，用来保存数据并参与集群保存和搜索数据的操作。
+
+- 索引：用于加快搜索速度，在 ES 中，索引是相似文档的集合。
+
+- 类型：对索引中包含文档的细分，区分不同类型的索引。
+
+- 文档：进行索引的基本单位，与索引中的类型是相对应的。每一个具体的索引有一个文档与之对应，使用 json 格式表示。文档的实例就是对应关系型数据中的实体（具体的数据）。
+
+- 分片：当索引超出单个节点所能承受的范围，可以使用分片来存储索引的部分数据，ES 会自动处理索引的分片与聚合。
+
+- 副本：分片的副本，有利于提高搜索效率和吞吐量。默认 ES 为每个索引分配 5 个分片和一个副本。
+
+### 4.1 集成 Spring Boot
+环境：
+
+- Elastic Search 2.4.4
+
+- Spring Data Elastic Search 2.1.4.RELEASE -- Spring Boot 对 ES 的支持模块
+
+- JNA 4.3.0 -- ES 依赖模块
+
+依赖：
+
+```gradle
+dependencies {
+    // 添加  Spring Data Elasticsearch 的依赖
+    compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
+    // 添加  JNA 的依赖
+    compile('net.java.dev.jna:jna:4.3.0')
+}
+
+```
+
+配置：
+
+```yml
+spring:
+  data:
+    elasticsearch:
+      # 服务地址
+      cluster-nodes: localhost:9300
+
+      # 连接超时时间
+      properties:
+        transport:
+          tcp:
+            connect_timeout：120
+```
+开启 Elastic Search：
+
+- 下载二进制文件：[官网](https://www.elastic.co/cn/downloads/elasticsearch)
+
+- 解压到指定目录
+
+- 进入 bin，根据系统平台执行 elasticsearch 命令
+
+后台编码：
+
+- 索引库实体：EsBlog
+
+- 资源库：EsBlogRepository
+
+- 测试用例：EsBlogRepositoryTest
+
+- 控制器：BlogController
+
+文档库实体：
+```java
+@Document(indexName = "blog", type = "blog") // 标注为文档实体类
+public class EsBlog implements Serializable {
+
+    @Id
+    private String id;
+    private String title;
+    private String summary; // 关键字
+    private String content;
+
+    // 遵循 JPA 规范
+    protected EsBlog() {
+    }
+
+    ......
+}
+```
+资源库：
+```java
+public interface EsBlogRepository extends ElasticsearchRepository<EsBlog, String> {
+
+    /**
+     * 分页查询博客（去重）
+     * JPA 自动根据方法名执行查询
+     */
+    Page<EsBlog> findDistinctEsBlogByTitleContainingOrSummaryContainingOrContentContaining(
+        String title,
+        String summary,
+        String content,
+        Pageable pageable);
+}
+```
+测试用例：
+```java
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class TestEsBlogRepository {
+    @Autowired
+    private EsBlogRepository esBlogRepository;
+
+    /**
+     * 测试文档库之前存入数据
+     */
+    @Before
+    public void initEsBlogRepository() {
+        esBlogRepository.deleteAll();
+        esBlogRepository.save(new EsBlog("登鹤雀楼", "王之涣的登鹤雀楼",
+                "白日依山尽，黄河入海流。欲穷千里目，更上一层楼。"));
+        esBlogRepository.save(new EsBlog("相思", "王维的相思",
+                "红豆生南国，春来发几枝。愿君多采颉，此物最相思。"));
+        esBlogRepository.save(new EsBlog("静夜思", "李白的静夜思",
+                "床前明月光，疑是地上霜。举头望明月，低头思故乡。"));
+    }
+
+    @Test
+    public void testFindDistinctEsBlogByTitleContainingOrSummaryContainingOrContentContaining() {
+        Pageable pageRequest = new PageRequest(0, 20);
+        // 搜索条件
+        String title = "思";
+        String summary = "思";
+        String content = "相思";
+        Page<EsBlog> page = esBlogRepository.findDistinctEsBlogByTitleContainingOrSummaryContainingOrContentContaining(
+                title, summary, content, pageRequest);
+        // 断言根据指定的 title、summary、content 来搜索 记录有两条
+        assertThat(page.getTotalElements()).isEqualTo(2);
+
+        // 打印结果
+        for (EsBlog blog : page.getContent()){
+            System.out.println(blog);
+        }
+    }
+}
+```
+控制器：
+```java
+@RestController
+@RequestMapping("/")
+public class BlogController {
+
+    @Autowired
+    private EsBlogRepository esBlogRepository;
+
+    @RequestMapping(value = "/blogs")
+    public List<EsBlog> list(@RequestParam(value = "title") String title,
+                             @RequestParam(value = "summary") String summary,
+                             @RequestParam(value = "content") String content,
+                             @RequestParam(value = "pageIndex", defaultValue = "0") int pageIndex,
+                             @RequestParam(value = "pageSize", defaultValue = "10") int pageSize
+    ) {
+        Pageable pageable = new PageRequest(0, 10);
+        Page<EsBlog> page = esBlogRepository.findDistinctEsBlogByTitleContainingOrSummaryContainingOrContentContaining(
+                title, summary, content, pageable);
+
+        return page.getContent();
+    }
+}
+```
+访问：
+
+![](blog-img/image_7.png)
+
+## 五、集成 BootStrap
+
+**是什么**：
+
+- 基于 HTML、CSS、JavaScript
+
+- 响应式布局
+
+- 移动设备优先
+
+**如何实现**：
+
+- 文档必须是 HTML5
+
+- 设置响应式的 meta 标签
+
+        <meta bane="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+- 通过 Normalize.css 达到浏览器一致性适配
+
+    - 使用 Normalize 建立跨浏览器的一致性
+
+    - 额外支持的 Reboot 
+
+**核心概念**：
+
+移动设备优先策略
+
+- 基础的 CSS 是移动优先。优先设计更小的宽度
+
+- 媒体查询。针对平板电脑、台式电脑再做宽屏适配
+
+- 渐进增强。随着屏幕大小的增加而添加元素
+
+网格系统
+
+响应式：viewport 尺寸的增加，系统会自动分为最多 12 格：
+
+![](blog-img/image_9.png)
+
+![](blog-img/image_22.png)
+
+实例：
+```html
+<!-- 此为一行，该行中有两列 -->
+<div class="row">
+    <!-- 此为一列：移动设备下占满 12 格，中型PC下占 8 格 -->
+    <div class="col-xs-12 col-md-8">.col-xs-12 col-md-8 .col-xs-12 col-md-8</div>
+    <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+</div>
+
+<!-- 一行中有三列 -->
+<div class="row">
+    <!-- 三列各占网格的 4 格刚好占满一行 -->
+    <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+    <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+    <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+</div>
+
+<!-- 一行中有两列 -->
+<div class="row">
+    <!-- 该行中有两列，每列占 6 格刚好占满一行 -->
+    <div class="col-xs-6">.col-xs-6</div>
+    <div class="col-xs-6">.col-xs-6</div>
+</div>
+<!--  -->
+```
+效果：
+
+![](blog-img/image_23.png)
+
+**常用组件、样式**
+
+- Typography 处理印刷
+
+- Table
+
+- Form
+
+- Button
+
+- Dropdown 下拉框
+
+- ButtonGroup 
+
+- InputGroup
+
+- Bavbar
+
+- Pagination 分页
+
+- Tag
+
+- Alert 提示框
+
+- Modal Dialog 模态框
+
+- Progress Bar 进度条
+
+- List Group 列表
+
+- Card 卡片
+
+- Tooltip 提示
+
+## 六、需求分析 / 原型设计
+
+## 七、权限管理
+
+**角色**
+
+- 代表一系列行为或责任的实体
+
+- 限定能做什么、不能做什么
+
+- 用户账号往往与角色相关联
+
+**RBAC**
+
+- 基于角色的访问控制（Role-Base Access Control）
+
+- 隐式访问控制：与角色关联的访问控制
+
+- 显式访问控制：与权限关联的访问控制（更灵活）
+
+### 7.1 Spring Security
+
+**安全领域核心概念**
+
+- 认证（authentication）：“认证”是建立主体（principal）的过程。“主体”通常是指可以在您的应用程序中执行操作的用户、设备或其他系统。
+
+- 授权（authorization）：或称为：“访问控制（access-control）”，“授权”是指决定是否允许主体在应用程序中执行操作。
+
+**支持的身份验证功能**
+
+- HTTP BASIC
+
+- HTTP Digest
+
+- HTTP X.509
+
+- LDAP
+
+- 基于表单的认证
+
+- OpenID
+
+- 单点登陆
+
+- Remmenber-Me
+
+- 匿名身份验证
+
+- Run-ad
+
+- JAAS
+
+- JavaEE 容器认证
+
+**提供的模块**
+
+- Core - Spring-security-core.jar —— 核心模块
+
+- Remoting - spring-security-remoting.jar —— 与 Spring Remoting 整合包
+
+- Web - spring-security-web.jar —— web 支持
+
+- Config - spring-security-config.jar —— 安全配置
+
+- LDAP - spring-security-idap.jar —— 用于 LDAP 认证及配置
+
+- ACL - spring-secutiry-acl.jar —— 访问控制列表的实现，对特定对象的实例进行安全配置
+
+- CAS - spring-secutiry-cas.jar —— 可作为单点登陆服务器
+
+- OpenID - spring-secutiry-openid.jar
+
+- Test - spring-secutiry-test.jar
+
+### 7.2 与 Spring Boot 集成
+
+环境：
+
+- Spring Secutiry 4.2.2.RELEASE
+
+- Thymeleaf Spring Secutiry 3.0.2.RELEASE
+
+依赖：
+
+```gradle
+dependencies {
+    // 添加  Spring Security 依赖
+    compile('org.springframework.boot:spring-boot-starter-security')
+    // 添加   Thymeleaf Spring Security 依赖，与 Thymeleaf 版本一致都是 3.x
+    compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE')
+}
+```
+
+后台编码：
+
+- 安全配置类
+
+- 控制器
+
+前台编码：
+
+- index.html
+
+- header.html
+
+- login.html
+
+```java
+@EnableWebSecurity
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    /**
+     * 自定义配置
+     */
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                    .antMatchers("/css/**", "/js/**", "/fonts/**", "/index").permitAll() // 都可以访问
+                    .antMatchers("/users/**").hasRole("ADMIN") // 需要相应的角色才能访问
+                    .and()
+                .formLogin()   // 基于 Form 表单登录验证
+                    .loginPage("/login") // 跳转到登陆地址
+                    .failureUrl("/login-error"); // 登陆失败跳转地址
+    }
+
+    /**
+     * 认证信息管理
+     *
+     * @param auth
+     * @throws Exception
+     */
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication() // 认证信息存储内存中
+                .withUser("yuzh").password("admin").roles("ADMIN"); // 硬编码测试
+    }
+}
+```
