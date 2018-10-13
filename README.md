@@ -35,6 +35,7 @@
     - [八、博客系统 —— 整体框架搭建](#八博客系统--整体框架搭建)
         - [8.1 API](#81-api)
     - [九、用户管理](#九用户管理)
+    - [角色管理](#角色管理)
 
 <!-- /TOC -->
 
@@ -1746,36 +1747,57 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * @return
      */
     User findByUsername(String username);
+
+    /**
+     * 查找用户名是否被占用
+     *
+     * @return
+     */
+    User queryUserByUsername(String username);
+
+    /**
+     * 查找邮箱是否被占用
+     *
+     * @param email
+     * @return
+     */
+    User queryUserByEmail(String email);
+
 }
 ```
 4. UserService 接口及实现
 
-5. 全局响应结果对象 
+5. xyz.yuzh.spring.boot.blog.vo.Response 全局响应结果对象
 
-6. 校验失败异常处理器工具类
-```java
-public class ConstraintViolationExceptionHandler {
-    /**
-     * 获取批量异常信息
-     *
-     * @param e
-     * @return
-     */
-    public static String getMessage(ConstraintViolationException e) {
-        ArrayList<String> msgList = new ArrayList<>();
-        for (ConstraintViolation<?> constraintViolation : e.getConstraintViolations()) {
-            msgList.add(constraintViolation.getMessage());
-        }
-        String messages = StringUtils.join(msgList.toArray(), ";");
-        return messages;
-    }
-}
-```
+6. AdminController 后台管理控制器 —— 跳转后台管理页面
 
-7. AdminController 跳转后台管理页面
-8. UserController 增删改查
+7. UserController 后台管理用户管理控制器 —— 增删改查
+
+8. UserOperationExcption 用户操作异常类
+
+9. GlobalExceptionHandler 全局异常处理类
 
 **前台实现**
 
-1. /admins/index.html
+1. login.html
+
+2. register.html
+
+3. /users/*.html
+
+4. /admins/*.html
+
+5. js/admins/*.js
+
+6. js/users/*.js
+
+**问题解决**
+
+[如何给通过脚本添加的元素注册事件]()
+
+[解决使用 bootstrap 更新操作时 —— 模态框回显传值问题]()
+
+## 角色管理
+
+
 

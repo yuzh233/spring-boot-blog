@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import xyz.yuzh.spring.boot.blog.entity.User;
 import xyz.yuzh.spring.boot.blog.repository.UserRepository;
+import xyz.yuzh.spring.boot.blog.util.UserOperationException;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -21,6 +22,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveOrUpdateUser(User user) {
+        String username = user.getUsername();
+        String email = user.getEmail();
+
+        User dbUser = queryUserByUsername(username);
+        if (dbUser != null) {
+            throw new UserOperationException.UsernameExistException();
+        }
+
+        User dbUser2 = queryUserByEmail(email);
+        if (dbUser2 != null) {
+            throw new UserOperationException.EmailExistException();
+        }
         return userRepository.save(user);
     }
 
@@ -55,6 +68,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public User queryUserByUsername(String username) {
+        return userRepository.queryUserByUsername(username);
+    }
+
+    @Override
+    public User queryUserByEmail(String email) {
+        return userRepository.queryUserByEmail(email);
     }
 
 }

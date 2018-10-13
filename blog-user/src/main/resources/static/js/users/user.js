@@ -37,7 +37,7 @@ $(function () {
                     location.href = "/";
                 } else {
                     $("#alertTips").removeClass("hidden").removeClass("alert-success").addClass("alert-danger")
-                        .addClass("show").text(data.message + "：" + data.body);
+                        .addClass("show").text(data.message);
                 }
             },
             error: function () {

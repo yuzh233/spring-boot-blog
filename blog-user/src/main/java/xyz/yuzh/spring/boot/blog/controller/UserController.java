@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import xyz.yuzh.spring.boot.blog.entity.User;
 import xyz.yuzh.spring.boot.blog.service.UserService;
-import xyz.yuzh.spring.boot.blog.util.ConstraintViolationExceptionHandler;
+import xyz.yuzh.spring.boot.blog.util.UserOperationException;
 import xyz.yuzh.spring.boot.blog.vo.Response;
 
-import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 /**
@@ -46,6 +45,7 @@ public class UserController {
         Page<User> userPage = userService.listUsersByNameLike(name, pageable);
         List<User> userList = userPage.getContent();
         map.addAttribute("users", userList);
+        map.addAttribute("page", userPage);
 
         if (async) {
             /**
@@ -59,19 +59,14 @@ public class UserController {
 
 
     /**
-     * /register：[POST] 注册
+     * /register：[POST] 注册 or 更新
      *
      * @param user
      * @return
      */
     @PostMapping(value = "/add")
     public ResponseEntity<Response> createAndUpdateUser(User user) {
-        try {
-            userService.saveOrUpdateUser(user);
-        } catch (ConstraintViolationException e) {
-            return ResponseEntity.ok().body(
-                    new Response(false, ConstraintViolationExceptionHandler.getMessage(e), user));
-        }
+        userService.saveOrUpdateUser(user);
         return ResponseEntity.ok().body(new Response(true, "注册成功", user));
     }
 
@@ -93,17 +88,18 @@ public class UserController {
     @PostMapping(value = "/login")
     public ResponseEntity<Response> login(@RequestParam(name = "username") String username,
                                           @RequestParam(name = "password") String password,
-                                          @RequestParam(name = "rememberMe", required = false, defaultValue = "false") boolean rememberMe) {
-        System.out.println(username + "," + password + "," + rememberMe);
-        User user = null;
-        try {
-            user = userService.findByUsername(username);
-            if (!(user.getUsername().equals(username) && user.getPassword().equals(password))) {
-                return ResponseEntity.ok().body(new Response(false, "fail", "账户或密码错误"));
-            }
-        } catch (ConstraintViolationException e) {
-            return ResponseEntity.ok().body(new Response(false, "fail", ConstraintViolationExceptionHandler.getMessage(e)));
+                                          @RequestParam(name = "rememberMe", required = false, defaultValue = "false")
+                                                  boolean rememberMe) {
+
+        User user = userService.findByUsername(username);
+
+        if (user == null) {
+            throw new UserOperationException.VerificationFailedException();
         }
+        if (!(user.getUsername().equals(username) && user.getPassword().equals(password))) {
+            throw new UserOperationException.VerificationFailedException();
+        }
+
         return ResponseEntity.ok().body(new Response(true, "success"));
     }
 
@@ -116,12 +112,7 @@ public class UserController {
      */
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Response> delete(@PathVariable("id") Long id, ModelMap map) {
-        try {
-            userService.removeUser(id);
-        } catch (ConstraintViolationException e) {
-            return ResponseEntity.ok().body(
-                    new Response(false, "fail", ConstraintViolationExceptionHandler.getMessage(e)));
-        }
+        userService.removeUser(id);
         return ResponseEntity.ok().body(new Response(true, "success"));
     }
 

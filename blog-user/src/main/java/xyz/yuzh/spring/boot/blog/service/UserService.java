@@ -21,15 +21,12 @@ public interface UserService {
 
     List<User> listUser();
 
-    /**
-     * 根据用户名模糊查询
-     *
-     * @param name
-     * @param pageable
-     * @return
-     */
     Page<User> listUsersByNameLike(String name, Pageable pageable);
 
     User findByUsername(String username);
+
+    User queryUserByUsername(String username);
+
+    User queryUserByEmail(String email);
 
 }
