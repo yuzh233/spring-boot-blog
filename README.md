@@ -34,6 +34,7 @@
         - [7.2 与 Spring Boot 集成](#72-与-spring-boot-集成)
     - [八、博客系统 —— 整体框架搭建](#八博客系统--整体框架搭建)
         - [8.1 API](#81-api)
+    - [九、用户管理](#九用户管理)
 
 <!-- /TOC -->
 
@@ -380,7 +381,7 @@ th:switch
 2). thymeleaf 解析器注释块 `<!--/*  */-->`
 
     删除 <!--/* 和 */--> 之间的所有内容
-    
+
     <!--/*--> 
       <div>you can see me only before thymeleaf processes me!</div>
     <!--*/-->
@@ -429,7 +430,7 @@ CSS 内联：`th:inline="css"`
     ${#ctx.servletContext}
     
     ${#locale}
-    
+
 **Request/session 等属性**
 
 param：用于检索请求参数
@@ -512,13 +513,13 @@ spring:
 
 **接口设计**
 
-| 接口                   | 描述                                                      |
-| ---------------------- | --------------------------------------------------------- |
-| GET /users             | 返回用于展示用户列表的 list.html                          |
-| GET /users/{id}        | 返回用于展示用户的 view.html                              |
-| GET /users/form        | 返回用于新增或者修改用户的 form.html                      |
-| POST /users            | 新增或修改用户，成功后重定向到 list.html                  |
-| GET /users/delete/{id} | 根据 id 删除相应的用户数据，成功后重定向到 list.html      |
+| 接口                     | 描述                                   |
+| ---------------------- | ------------------------------------ |
+| GET /users             | 返回用于展示用户列表的 list.html                |
+| GET /users/{id}        | 返回用于展示用户的 view.html                  |
+| GET /users/form        | 返回用于新增或者修改用户的 form.html              |
+| POST /users            | 新增或修改用户，成功后重定向到 list.html            |
+| GET /users/delete/{id} | 根据 id 删除相应的用户数据，成功后重定向到 list.html    |
 | GET /users/modify/{id} | 根据 id 获取相应的用户数据，并返回 form.html 用来执行修改 |
 
 **后台编码**
@@ -1492,6 +1493,23 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 ## 八、博客系统 —— 整体框架搭建
 
+控制器：
+
+- MainController 主页控制器
+
+- BlogController 博客控制器
+
+- UserspaceController 用户主页控制器
+
+- AdminController 管理员控制器
+
+- UserController 用户控制器
+
+原型设计：
+
+- 略
+
+
 ### 8.1 API
 
 **index：主页，包含最新、最热文章，最热标签，最热用户等**
@@ -1514,7 +1532,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 - `/u/{username}/profile`: [post] 保存个人设置页面
     - username 用户账号
     - User 待保存的对象
- 
+
  - `/u/{username}/avatar`: [get] 获取个人头像
     - username 用户账号
 
@@ -1544,7 +1562,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     - username 用户账号
     - id 博客ID
 
-**login：登陆**
+<!-- **login：登陆**
 
 - `/login`: [get] 获取登陆页面
 
@@ -1556,9 +1574,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 - `/register`: [get] 获取注册页面
 
 - `/register`: [post] 注册成功跳转至登陆页面
-    - User 待保存的用户对象
+    - User 待保存的用户对象 -->
 
-**users：用户管理**
+<!-- **users：用户管理**
 
 - `/users`: [get] 用户列表
     - async
@@ -1576,7 +1594,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     - id
 
 - `/users/edit/{id}`: [get] 获取某个具体用户编辑页面
-    - id
+    - id -->
 
 **comments：评论管理**
 
@@ -1585,7 +1603,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 - `/comments`: [post] 保存评论
     - blogid 博客id
-    commentContent 评论内容
+      commentContent 评论内容
 
 - `/comments/{id}`: [delete] 删除评论
     - blogid 博客id
@@ -1616,4 +1634,148 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 - `/catalogs/{id}`: [delete] 删除分类
     - id 分类ID
     - username 用户账号
+
+## 九、用户管理
+
+**需求分析**
+
+![](blog-img/image_25.png)
+
+注册
+
+- `/register`：[GET] 获取注册页面
+
+- `/register`：[POST] 注册成功，跳转登陆页面
+    - User 用户对象
+
+登陆:
+
+- `/login`: [get] 获取登陆页面
+
+- `/login`: [post] 登陆
+    - username
+    - password
+    - remember-me 是否记住我
+
+用户管理
+
+- `/users`: [get] 用户列表
+    - async
+    - pageIndex
+    - pageSize
+    - name 用户名称关键字
+
+- `/users/add`: [get] 获取添加用户页面
+
+- `/users/add`: [post] 保存添加的用户
+    - User
+    - authorityId 角色ID
+
+- `/users/{id}`: [delete] 删除用户
+    - id
+
+- `/users/edit/{id}`: [get] 获取某个具体用户编辑页面
+    - id
+
+**后台实现**
+
+1. 原有基础上添加依赖：
+
+        // 添加  Apache Commons Lang 依赖
+        compile('org.apache.commons:commons-lang3:3.5')
+
+2. 对 User 实体添加持久化和校验注解：
+
+```java
+@Data
+@Entity
+public class User implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @NotEmpty(message = "姓名不能为空")
+    @Size(min=2, max=20)
+    @Column(nullable = false, length = 20) // 映射为字段，值不能为空
+    private String name;
+
+    @NotEmpty(message = "邮箱不能为空")
+    @Size(max=50)
+    @Email(message= "邮箱格式不对" )
+    @Column(nullable = false, length = 50, unique = true)
+    private String email;
+
+    @NotEmpty(message = "账号不能为空")
+    @Size(min=3, max=20)
+    @Column(nullable = false, length = 20, unique = true)
+    private String username; // 用户账号，用户登录时的唯一标识
+
+    @NotEmpty(message = "密码不能为空")
+    @Size(max=100)
+    @Column(length = 100)
+    private String password; // 登录时密码
+
+    @Column(length = 200)
+    private String avatar; // 头像图片地址
+
+    private int age;
+
+    protected User() {
+    }
+}
+```
+
+3. 实现 JpaRepository 接口，根据规范的方法名执行查询：
+
+```java
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    /**
+     * 根据用户名分页查询列表
+     *
+     * @param name
+     * @param pageable
+     * @return
+     */
+    Page<User> findByNameLike(String name, Pageable pageable);
+
+    /**
+     * 根据用户账号查询用户
+     *
+     * @param username
+     * @return
+     */
+    User findByUsername(String username);
+}
+```
+4. UserService 接口及实现
+
+5. 全局响应结果对象 
+
+6. 校验失败异常处理器工具类
+```java
+public class ConstraintViolationExceptionHandler {
+    /**
+     * 获取批量异常信息
+     *
+     * @param e
+     * @return
+     */
+    public static String getMessage(ConstraintViolationException e) {
+        ArrayList<String> msgList = new ArrayList<>();
+        for (ConstraintViolation<?> constraintViolation : e.getConstraintViolations()) {
+            msgList.add(constraintViolation.getMessage());
+        }
+        String messages = StringUtils.join(msgList.toArray(), ";");
+        return messages;
+    }
+}
+```
+
+7. AdminController 跳转后台管理页面
+8. UserController 增删改查
+
+**前台实现**
+
+1. /admins/index.html
 
