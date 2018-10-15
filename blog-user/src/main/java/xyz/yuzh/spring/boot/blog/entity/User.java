@@ -38,6 +38,7 @@ public class User implements Serializable {
     @Column(length = 200)
     private String avatar; // 头像图片地址
 
+    @Column
     private int age;
 
     protected User() {

@@ -35,7 +35,8 @@
     - [八、博客系统 —— 整体框架搭建](#八博客系统--整体框架搭建)
         - [8.1 API](#81-api)
     - [九、用户管理](#九用户管理)
-    - [角色管理](#角色管理)
+    - [九、角色管理](#九角色管理)
+    - [十、权限管理](#十权限管理)
 
 <!-- /TOC -->
 
@@ -1749,19 +1750,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
     /**
-     * 查找用户名是否被占用
-     *
-     * @return
-     */
-    User queryUserByUsername(String username);
+    * 查找用户名是否被占用
+    */
+    boolean existsByUsername(String primaryKey);
 
     /**
      * 查找邮箱是否被占用
-     *
-     * @param email
-     * @return
      */
-    User queryUserByEmail(String email);
+    boolean existsByEmail(String primaryKey);
 
 }
 ```
@@ -1797,7 +1793,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 [解决使用 bootstrap 更新操作时 —— 模态框回显传值问题]()
 
-## 角色管理
+## 九、角色管理
+
+
+
+## 十、权限管理
+
 
 
 

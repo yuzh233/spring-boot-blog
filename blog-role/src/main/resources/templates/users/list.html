@@ -1,0 +1,104 @@
+<div class="card-header bg-dark font-white">
+    <div class="input-group col-md-7 col-xl-6">
+        <input type="text" class="form-control" id="searchName" placeholder="输入用户名称进行搜索">
+        <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button" id="searchNameBtn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </span>
+        <!-- 数据切换模式：modal； 打开的模态框id：flipFlop；  -->
+        <a class="btn btn-primary" data-toggle="modal" data-target="#userModal" role="button" id="addUser">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
+<div id="mainContainer" class="container">
+    <div id="mainContainerRepleace" class="row">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="username">账号</th>
+                <th data-field="name">姓名</th>
+                <th data-field="email">邮箱</th>
+                <th data-field="authorities">角色</th>
+                <th data-field="operation">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.authorities}"></td>
+                <td>
+                    <div>
+                        <!-- 编辑连接 -->
+                        <a class="blog-edit-user" data-toggle="modal" data-target="#userModal" role="button"
+                           data-th-attr="userId=${user.id}">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                        <!-- 删除链接 -->
+                        <a class="blog-delete-user" role="button" data-th-attr="userId=${user.id}">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- 分页插件 -->
+        <div th:replace="~{fragments/page :: page}">...</div>
+
+    </div>
+</div>
+
+<!-- The modal -->
+<!-- fade:淡入；添加 role 和 aria-labelled 确保可见并引用模态框的标题 -->
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">新增/编辑</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="userFormContainer">
+                <form id="userForm">
+                    <div class="form-group">
+                        <label for="username" class="col-form-label">账号</label>
+                        <input type="text" class="form-control" id="username" name="username" maxlength="50"
+                               placeholder="请输入账号，至少3个字符，至多20个" data-th-value="${user!=null}?${user.username}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-form-label">邮箱</label>
+                        <input type="email" class="form-control" id="email" name="email" maxlength="50"
+                               placeholder="请输入邮箱" data-th-value="${user!=null}?${user.email}">
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">姓名</label>
+                        <input type="text" class="form-control" id="name" name="name" maxlength="20"
+                               placeholder="请输入姓名，至少2个字符，至多20个" data-th-value="${user!=null}?${user.name}">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-form-label">密码</label>
+                        <input type="password" class="form-control" id="password" name="password" maxlength="30"
+                               placeholder="请输入密码，字母或特殊符号和数字结合" data-th-value="${user!=null}?${user.password}">
+                    </div>
+                    <input type="hidden" name="id" data-th-if="${user!=null}" data-th-value="${user!=null}?${user.id}">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" type="button" id="submitEdit">提交</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script th:src="@{/js/users/main.js}"></script>
+
