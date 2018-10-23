@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import xyz.yuzh.spring.boot.blog.domain.User;
@@ -17,13 +18,13 @@ import java.util.List;
  * @author yu.zh
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
 
     @Override
-    public User saveOrUpdateUser(User user) {
+    public User saveUser(User user) {
         String username = user.getUsername();
         String email = user.getEmail();
 
@@ -34,6 +35,11 @@ public class UserServiceImpl implements UserService {
             throw new UserOperationException.EmailExistException();
         }
 
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User updateUser(User user) {
         return userRepository.save(user);
     }
 

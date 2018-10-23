@@ -10,5 +10,8 @@ import xyz.yuzh.spring.boot.blog.domain.Authority;
  */
 public interface AuthorityService {
 
-    Authority findAuthorityById(Long id);
+    /**
+     * 根据id获取 Authority
+     */
+    Authority getAuthorityById(Long id);
 }

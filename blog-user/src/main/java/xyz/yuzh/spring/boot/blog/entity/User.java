@@ -39,12 +39,12 @@ public class User implements Serializable {
     private String avatar; // 头像图片地址
 
     @Column
-    private int age;
+    private Integer age;
 
     protected User() {
     }
 
-    public User(long id, String name, String username, String email, int age) {
+    public User(long id, String name, String username, String email, Integer age) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -113,11 +113,11 @@ public class User implements Serializable {
         this.avatar = avatar;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 }

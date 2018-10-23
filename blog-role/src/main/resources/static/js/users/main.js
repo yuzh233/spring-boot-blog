@@ -66,10 +66,27 @@ $(function () {
 
     // 添加/修改 用户后，清空表单
     $("#submitEdit").click(function () {
+        var authorityId = $("#authorityId").val();
+        if (authorityId == null){
+            saveUser();
+        } else {
+            modifyUser();
+        }
+    });
+
+    // 新建用户
+    function saveUser(){
+        var csrfToken = $("meta[name='_csrf']").attr("content");
+        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
         $.ajax({
-            url: "/users/add",
+            url: "/users/save",
             method: 'POST',
             data: $('#userForm').serialize(),
+            // 添加  CSRF Token
+            beforeSend: function (request) {
+                request.setRequestHeader(csrfHeader, csrfToken);
+            },
             success: function (data) {
                 $('#userForm')[0].reset();
                 if (data.success) {
@@ -84,20 +101,48 @@ $(function () {
                 toastr.error("error!");
             }
         });
-    });
+    }
+
+    // 更新用户
+    function modifyUser(){
+        var csrfToken = $("meta[name='_csrf']").attr("content");
+        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+        $.ajax({
+            url: "/users/modify",
+            method: 'POST',
+            data: $('#userForm').serialize(),
+            // 添加  CSRF Token
+            beforeSend: function (request) {
+                request.setRequestHeader(csrfHeader, csrfToken);
+            },
+            success: function (data) {
+                $('#userForm')[0].reset();
+                if (data.success) {
+                    // 刷新主界面
+                    getUersByName(0, _pageSize);
+                } else {
+                    toastr.error(data.message);
+                }
+            },
+            error: function () {
+                toastr.error("error!");
+            }
+        });
+    }
 
     // 删除用户
     $("body").on("click", ".blog-delete-user", function () {
         // 获取 CSRF Token
-        // var csrfToken = $("meta[name='_csrf']").attr("content");
-        // var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+        var csrfToken = $("meta[name='_csrf']").attr("content");
+        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
         $.ajax({
             url: "/users/" + $(this).attr("userId"),
             type: 'DELETE',
-            /*beforeSend: function (request) {
+            beforeSend: function (request) {
                 request.setRequestHeader(csrfHeader, csrfToken); // 添加  CSRF Token
-            },*/
+            },
             success: function (data) {
                 if (data.success) {
                     getUersByName(0, _pageSize);

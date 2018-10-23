@@ -1,45 +1,5 @@
 # 基于 Spring Boot 技术栈构建企业级博客系统的开发记录
 
-<!-- TOC -->
-
-- [基于 Spring Boot 技术栈构建企业级博客系统的开发记录](#基于-spring-boot-技术栈构建企业级博客系统的开发记录)
-    - [一、 使用 Gradle / Spring Initializer 搭建 Spring Boot 运行环境](#一-使用-gradle--spring-initializer-搭建-spring-boot-运行环境)
-        - [1.1 安装 Gradle 环境](#11-安装-gradle-环境)
-        - [1.2 使用 Spring Initializer 快速生成 Spring Boot 应用](#12-使用-spring-initializer-快速生成-spring-boot-应用)
-        - [1.3 项目结构](#13-项目结构)
-        - [1.4 自定义存储仓库](#14-自定义存储仓库)
-        - [1.5 编写程序代码及测试用例](#15-编写程序代码及测试用例)
-        - [1.6 以 Gradle / Wrapper 编译项目](#16-以-gradle--wrapper-编译项目)
-        - [1.7 Gradle 项目运行的三种方式](#17-gradle-项目运行的三种方式)
-    - [二、 Thymeleaf 模板引擎](#二-thymeleaf-模板引擎)
-        - [2.1 Thymeleaf](#21-thymeleaf)
-        - [2.2 标准方言（语法）](#22-标准方言语法)
-        - [2.3 表达式基本对象](#23-表达式基本对象)
-        - [2.4 集成 Spring Boot](#24-集成-spring-boot)
-        - [2.5 Thymeleaf 实战](#25-thymeleaf-实战)
-    - [三、 Spring Data JPA 数据持久化](#三-spring-data-jpa-数据持久化)
-        - [3.1 JPA 简介](#31-jpa-简介)
-        - [3.2 JPA 核心概念](#32-jpa-核心概念)
-        - [3.3 Spring Data JPA 使用概括](#33-spring-data-jpa-使用概括)
-        - [3.4. Spring Data JPA / Hibernate / Spring Boot 集成](#34-spring-data-jpa--hibernate--spring-boot-集成)
-        - [3.5 数据持久化实战](#35-数据持久化实战)
-            - [3.5.1 H2 内存数据库](#351-h2-内存数据库)
-            - [3.5.2 MySql 物理数据库](#352-mysql-物理数据库)
-    - [四、Elastic Search 全文搜索](#四elastic-search-全文搜索)
-        - [4.1 集成 Spring Boot](#41-集成-spring-boot)
-    - [五、集成 BootStrap](#五集成-bootstrap)
-    - [六、需求分析 / 原型设计](#六需求分析--原型设计)
-    - [七、权限管理](#七权限管理)
-        - [7.1 Spring Security](#71-spring-security)
-        - [7.2 与 Spring Boot 集成](#72-与-spring-boot-集成)
-    - [八、博客系统 —— 整体框架搭建](#八博客系统--整体框架搭建)
-        - [8.1 API](#81-api)
-    - [九、用户管理](#九用户管理)
-    - [九、角色管理](#九角色管理)
-    - [十、权限管理](#十权限管理)
-
-<!-- /TOC -->
-
 ## 一、 使用 Gradle / Spring Initializer 搭建 Spring Boot 运行环境
 
 ###  1.1 安装 Gradle 环境
@@ -52,13 +12,13 @@
 
 命令行 `gradle -v` 查看版本：
 
-![](blog-img/image_5.png)
+![](leanote://file/getImage?fileId=5bced085fe73740c58000002)
 
 ### 1.2 使用 Spring Initializer 快速生成 Spring Boot 应用
 
 使用 Spring 快速开始[向导](https://start.spring.io/)，创建一个项目并下载到本地。  
 
-![](blog-img\image_6.png)
+![](leanote://file/getImage?fileId=5bced0cefe73740c58000003)
 
 使用 gradle 编译项目，进入根目录执行：
 
@@ -68,7 +28,7 @@ gradle build
 
 编译完成之后会在目录生成一个 build 文件夹，里面存放着编译后的文件以及安装的jar。
 
-![](blog-img/image_8.png)
+![](leanote://file/getImage?fileId=5bced0e5fe73740c58000004)
 
 运行这个 jar ：
 
@@ -76,13 +36,13 @@ gradle build
 java -jar spring-boot-blog-0.0.1-SNAPSHOT.jar
 ```
 
-![](blog-img/image_10.png)
+![](leanote://file/getImage?fileId=5bced0fcfe73740c58000005)
 
 一个简单的 spring  boot 应用启动起来了，接下来可以正常访问。
 
 ### 1.3 项目结构
 
-![](blog-img/image_11.png)
+![](leanote://file/getImage?fileId=5bced106fe73740c58000006)
 
 - `.gradle`  gradle 运行时相关配置文件，不用多说了。
 - `文件夹 build` 项目编译后路径
@@ -202,11 +162,11 @@ public class SpringBootBlogApplicationTests {
 gradlew build
 ```
 
-![](blog-img/image_12.png)
+![](leanote://file/getImage?fileId=5bced119fe73740c58000007)
 
 运行：
 
-![](blog-img/image_13.png)
+![](leanote://file/getImage?fileId=5bced122fe73740c58000008)
 
 ### 1.7 Gradle 项目运行的三种方式
 
@@ -220,7 +180,7 @@ gradlew build
 gradle bootRun / gradlew bootRun (wrapper 方式)
 ```
 
-![](blog-img/image_14.png)
+![](leanote://file/getImage?fileId=5bced12ffe73740c58000009)
 
 ## 二、 Thymeleaf 模板引擎
 
@@ -946,11 +906,11 @@ spring:
 
 访问控制台： http://localhost:8080/h2-console/
 
-![](blog-img/image_15.png)
+![](leanote://file/getImage?fileId=5bced16bfe73740c5800000a)
 
 注意：JDBC URL 需要手动更改为 `jdbc:h2:mem:testdb` 才能正常访问，否则看不到保存的表。接着点击 `connect` 
 
-![](blog-img/image_17.png)
+![](leanote://file/getImage?fileId=5bced173fe73740c5800000b)
 
 
 
@@ -988,11 +948,11 @@ spring:
 
 启动项目，可以看到 hibernate 自动创建了表结构，字段和实体属性一一对应。
 
-![](blog-img/image_18.png)
+![](leanote://file/getImage?fileId=5bced180fe73740c5800000c)
 
 浏览器存入了两条数据之后，查看数据库：
 
-![](blog-img/image_19.png)
+![](leanote://file/getImage?fileId=5bced187fe73740c5800000d)
 
 数据成功存入，并且 h2 数据库没有存入，说明指定了 mysql 作为数据源， h2 的配置可有可无了。
 
@@ -1210,7 +1170,7 @@ public class BlogController {
 ```
 访问：
 
-![](blog-img/image_7.png)
+![](leanote://file/getImage?fileId=5bced19dfe73740c5800000e)
 
 ## 五、集成 BootStrap
 
@@ -1250,9 +1210,9 @@ public class BlogController {
 
 响应式：viewport 尺寸的增加，系统会自动分为最多 12 格：
 
-![](blog-img/image_9.png)
+![](leanote://file/getImage?fileId=5bced1a8fe73740c5800000f)
 
-![](blog-img/image_22.png)
+![](leanote://file/getImage?fileId=5bced1b1fe73740c58000010)
 
 实例：
 ```html
@@ -1281,7 +1241,7 @@ public class BlogController {
 ```
 效果：
 
-![](blog-img/image_23.png)
+![](leanote://file/getImage?fileId=5bced1c0fe73740c58000011)
 
 **常用组件、样式**
 
@@ -1321,39 +1281,39 @@ public class BlogController {
 
 需求/核心功能：
 
-![](blog-img/image_24.png)
+![](leanote://file/getImage?fileId=5bced1cefe73740c58000012)
 
 用户管理：
 
-![](blog-img/image_25.png)
+![](leanote://file/getImage?fileId=5bced1d4fe73740c58000013)
 
 安全设置：
 
-![](blog-img/image_26.png)
+![](leanote://file/getImage?fileId=5bced1dcfe73740c58000014)
 
 博客管理：
 
-![](blog-img/image_27.png)
+![](leanote://file/getImage?fileId=5bced1e6fe73740c58000015)
 
 评论管理：
 
-![](blog-img/image_28.png)
+![](leanote://file/getImage?fileId=5bced1effe73740c58000016)
 
 点赞管理：
 
-![](blog-img/image_34.png)
+![](leanote://file/getImage?fileId=5bced1f7fe73740c58000017)
 
 分类管理：
 
-![](blog-img/image_29.png)
+![](leanote://file/getImage?fileId=5bced1fffe73740c58000018)
 
 标签管理：
 
-![](blog-img/image_33.png)
+![](leanote://file/getImage?fileId=5bced207fe73740c58000019)
 
 首页管理：
 
-![](blog-img/image_30.png)
+![](leanote://file/getImage?fileId=5bced20ffe73740c5800001a)
 
 ## 七、权限管理
 
@@ -1641,7 +1601,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 **需求分析**
 
-![](blog-img/image_25.png)
+![](leanote://file/getImage?fileId=5bced225fe73740c5800001b)
 
 注册
 
@@ -1794,8 +1754,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 [解决使用 bootstrap 更新操作时 —— 模态框回显传值问题]()
 
 ## 九、角色管理
-
-
 
 ## 十、权限管理
 

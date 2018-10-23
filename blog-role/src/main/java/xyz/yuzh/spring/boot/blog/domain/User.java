@@ -91,6 +91,7 @@ public class User implements UserDetails, Serializable {
                 ", password='" + password + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", age=" + age +
+                ", authorities=" + authorities +
                 '}';
     }
 

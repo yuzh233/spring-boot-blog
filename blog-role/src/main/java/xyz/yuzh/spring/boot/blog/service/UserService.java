@@ -12,9 +12,11 @@ import java.util.List;
  *
  * @author yu.zh
  */
-public interface UserService extends UserDetailsService {
+public interface UserService{
 
-    User saveOrUpdateUser(User user);
+    User saveUser(User user);
+
+    User updateUser(User user);
 
     void removeUser(Long id);
 

@@ -88,7 +88,14 @@
                         <input type="password" class="form-control" id="password" name="password" maxlength="30"
                                placeholder="请输入密码，字母或特殊符号和数字结合" data-th-value="${user!=null}?${user.password}">
                     </div>
-                    <input type="hidden" name="id" data-th-if="${user!=null}" data-th-value="${user!=null}?${user.id}">
+                    <div data-th-if="${user!=null}" class="form-group">
+                        <label for="authorities" class="col-form-label">角色</label>
+                        <select id="authorities" name="authorityId" class="form-control form-control-chosen" data-placeholder="请选择">
+                            <option value="1" data-th-selected="${#strings.contains(user.authorities[0],'ROLE_ADMIN')}">管理员</option>
+                            <option value="2" data-th-selected="${#strings.contains(user.authorities[0],'ROLE_USER')}">博主</option>
+                        </select>
+                    </div>
+                    <input type="hidden" name="id" id="authorityId" data-th-if="${user!=null}" data-th-value="${user!=null}?${user.id}">
                 </form>
             </div>
             <div class="modal-footer">

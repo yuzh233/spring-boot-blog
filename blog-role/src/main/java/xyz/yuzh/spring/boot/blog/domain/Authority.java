@@ -11,7 +11,6 @@ import javax.persistence.*;
  * @date 2018/10/14
  */
 @Entity
-//@Table(name = "authority") // 默认值
 public class Authority implements GrantedAuthority { // 需要实现 spring security 内置对象
 
     @Id

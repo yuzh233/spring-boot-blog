@@ -1,6 +1,6 @@
 $(function () {
 
-    // 用户注册
+    // 用户注册（前台）
     $("#registerBtn").on('click', function () {
         // 获取 CSRF Token
         var csrfToken = $("meta[name='_csrf']").attr("content");
@@ -8,7 +8,7 @@ $(function () {
 
         $.ajax({
             method: "POST",
-            url: "/users/register",
+            url: "/register",
             dataType: "json",
             data: $("#registerForm").serialize(),
             // 添加  CSRF Token
@@ -34,7 +34,7 @@ $(function () {
     });
 
     // 用户登陆
-    $("#loginBtn").on('click', function () {
+    /*$("#loginBtn").on('click', function () {
         // 获取 CSRF Token
         var csrfToken = $("meta[name='_csrf']").attr("content");
         var csrfHeader = $("meta[name='_csrf_header']").attr("content");
@@ -63,5 +63,5 @@ $(function () {
                     .addClass("show").text("登陆失败！");
             }
         });
-    });
+    });*/
 });

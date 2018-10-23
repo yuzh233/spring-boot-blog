@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * 首页控制器
+ * @author yu.zh
  */
 @Controller
 public class MainController {
@@ -22,6 +23,7 @@ public class MainController {
 
     @GetMapping("/login")
     public String login(){
+        System.out.println("to loginPage");
         return "login";
     }
 

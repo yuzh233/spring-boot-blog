@@ -5,8 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,7 +13,6 @@ import xyz.yuzh.spring.boot.blog.domain.Authority;
 import xyz.yuzh.spring.boot.blog.domain.User;
 import xyz.yuzh.spring.boot.blog.service.AuthorityService;
 import xyz.yuzh.spring.boot.blog.service.UserService;
-import xyz.yuzh.spring.boot.blog.util.UserOperationException;
 import xyz.yuzh.spring.boot.blog.vo.Response;
 
 import java.util.ArrayList;
@@ -25,12 +23,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/users")
-//@PreAuthorize("hasAuthority('ROLE_ADMIN')")  // 指定角色权限才能操作方法
+@PreAuthorize("hasAuthority('ROLE_ADMIN')")  // 指定角色权限才能操作方法
 public class UserController {
-
-    public final static Long ROLE_ADMIN_AUTHORITY_ID = 1L;
-
-    private static final Long ROLE_USER_AUTHORITY_ID = 2L;
 
     @Autowired
     private UserService userService;
@@ -70,44 +64,38 @@ public class UserController {
         return new ModelAndView("users/list", map);
     }
 
-
     /**
-     * /register：[POST] 注册 or 更新
+     * 后台管理：新建用户
      *
      * @param user
-     * @param authorityId 角色ID
      * @return
      */
-    @PostMapping(value = "/register")
-    public ResponseEntity<Response> createAndUpdateUser(User user, Long authorityId) {
-        // 默认创建用户角色是管理员
+    @PostMapping(value = "/save")
+    public ResponseEntity<Response> createAndUpdateUser(User user) {
         List<Authority> authorities = new ArrayList<>();
-        authorities.add(authorityService.findAuthorityById(ROLE_USER_AUTHORITY_ID));
+        authorities.add(authorityService.getAuthorityById(MainController.ROLE_USER_AUTHORITY_ID));
         user.setAuthorities(authorities);
 
-        /*if (user.getId() == null) {
-            // 创建操作
-            user.setEncodePassword(user.getPassword());
-        } else {
-            // 更新操作
+        userService.saveUser(user);
+        return ResponseEntity.ok().body(new Response(true, "新建用户成功"));
+    }
 
-            // 判断密码是否做了变更，是否需要重新加密密码
-            User originalUser = userService.getUserById(user.getId());
-            String rawPassword = originalUser.getPassword();
-            PasswordEncoder encoder = new BCryptPasswordEncoder();
-            String encodePasswd = encoder.encode(user.getPassword());
-            boolean isMatch = encoder.matches(rawPassword, encodePasswd);
-            if (!isMatch) {
-                // 重新加密
-                user.setEncodePassword(user.getPassword());
-            } else {
-                user.setPassword(user.getPassword());
-            }
-        }*/
+    /**
+     * 后台管理：修改用户
+     *
+     * @param user
+     * @param authorityId
+     * @return
+     */
+    @PostMapping(value = "/modify")
+    public ResponseEntity<Response> modifyUser(User user, Long authorityId) {
+        List<Authority> authorities = new ArrayList<>();
+        authorities.add(authorityService.getAuthorityById(authorityId));
+        user.setAuthorities(authorities);
 
-        userService.saveOrUpdateUser(user);
-
-        return ResponseEntity.ok().body(new Response(true, "注册成功"));
+        System.out.println("[修改用户：]"+user);
+        userService.updateUser(user);
+        return ResponseEntity.ok().body(new Response(true, "用户修改成功"));
     }
 
     /**
@@ -115,7 +103,7 @@ public class UserController {
      *
      * @return
      */
-    @PostMapping(value = "/login")
+    /*@PostMapping(value = "/login")
     public ResponseEntity<Response> login(@RequestParam(name = "username") String username,
                                           @RequestParam(name = "password") String password,
                                           @RequestParam(name = "rememberMe", required = false) boolean rememberMe) {
@@ -125,19 +113,19 @@ public class UserController {
             throw new UserOperationException.VerificationFailedException();
         }
 
-        /*String rawPassword = user.getPassword();
+        *//*String rawPassword = user.getPassword();
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodePasswd = encoder.encode(password);
         boolean isMatch = encoder.matches(rawPassword, encodePasswd);
 
-        System.out.println(isMatch);*/
+        System.out.println(isMatch);*//*
 
         if (!(user.getUsername().equals(username) && user.getPassword().equals(password))) {
             throw new UserOperationException.VerificationFailedException();
         }
 
         return ResponseEntity.ok().body(new Response(true, "success"));
-    }
+    }*/
 
     /**
      * /users/{id}: [delete] 删除用户

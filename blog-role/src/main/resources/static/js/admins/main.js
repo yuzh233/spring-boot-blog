@@ -23,7 +23,15 @@ $(function() {
 			 success: function(data){
 				 $("#rightContainer").html(data);
 		 },
-		 error : function() {
+		 error : function(jqXHR, textStatus, errorThrown){
+             var responseText = jqXHR.responseText;
+             var json = JSON.parse(responseText);
+             var message = json.message;
+             alert(message);
+             if(message == '不允许访问'){
+             	location.href = "/";
+             	return false;
+			 }
 		     alert("error");
 		     }
 		 });
