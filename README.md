@@ -12,13 +12,13 @@
 
 命令行 `gradle -v` 查看版本：
 
-![](leanote://file/getImage?fileId=5bced085fe73740c58000002)
+![](https://leanote.com/api/file/getImage?fileId=5bced085fe73740c58000002)
 
 ### 1.2 使用 Spring Initializer 快速生成 Spring Boot 应用
 
 使用 Spring 快速开始[向导](https://start.spring.io/)，创建一个项目并下载到本地。  
 
-![](leanote://file/getImage?fileId=5bced0cefe73740c58000003)
+![](https://leanote.com/api/file/getImage?fileId=5bced0cefe73740c58000003)
 
 使用 gradle 编译项目，进入根目录执行：
 
@@ -28,7 +28,7 @@ gradle build
 
 编译完成之后会在目录生成一个 build 文件夹，里面存放着编译后的文件以及安装的jar。
 
-![](leanote://file/getImage?fileId=5bced0e5fe73740c58000004)
+![](https://leanote.com/api/file/getImage?fileId=5bced0e5fe73740c58000004)
 
 运行这个 jar ：
 
@@ -36,13 +36,13 @@ gradle build
 java -jar spring-boot-blog-0.0.1-SNAPSHOT.jar
 ```
 
-![](leanote://file/getImage?fileId=5bced0fcfe73740c58000005)
+![](https://leanote.com/api/file/getImage?fileId=5bced0fcfe73740c58000005)
 
 一个简单的 spring  boot 应用启动起来了，接下来可以正常访问。
 
 ### 1.3 项目结构
 
-![](leanote://file/getImage?fileId=5bced106fe73740c58000006)
+![](https://leanote.com/api/file/getImage?fileId=5bced106fe73740c58000006)
 
 - `.gradle`  gradle 运行时相关配置文件，不用多说了。
 - `文件夹 build` 项目编译后路径
@@ -162,11 +162,11 @@ public class SpringBootBlogApplicationTests {
 gradlew build
 ```
 
-![](leanote://file/getImage?fileId=5bced119fe73740c58000007)
+![](https://leanote.com/api/file/getImage?fileId=5bced119fe73740c58000007)
 
 运行：
 
-![](leanote://file/getImage?fileId=5bced122fe73740c58000008)
+![](https://leanote.com/api/file/getImage?fileId=5bced122fe73740c58000008)
 
 ### 1.7 Gradle 项目运行的三种方式
 
@@ -180,7 +180,7 @@ gradlew build
 gradle bootRun / gradlew bootRun (wrapper 方式)
 ```
 
-![](leanote://file/getImage?fileId=5bced12ffe73740c58000009)
+![](https://leanote.com/api/file/getImage?fileId=5bced12ffe73740c58000009)
 
 ## 二、 Thymeleaf 模板引擎
 
@@ -906,11 +906,11 @@ spring:
 
 访问控制台： http://localhost:8080/h2-console/
 
-![](leanote://file/getImage?fileId=5bced16bfe73740c5800000a)
+![](https://leanote.com/api/file/getImage?fileId=5bced16bfe73740c5800000a)
 
 注意：JDBC URL 需要手动更改为 `jdbc:h2:mem:testdb` 才能正常访问，否则看不到保存的表。接着点击 `connect` 
 
-![](leanote://file/getImage?fileId=5bced173fe73740c5800000b)
+![](https://leanote.com/api/file/getImage?fileId=5bced173fe73740c5800000b)
 
 
 
@@ -948,11 +948,11 @@ spring:
 
 启动项目，可以看到 hibernate 自动创建了表结构，字段和实体属性一一对应。
 
-![](leanote://file/getImage?fileId=5bced180fe73740c5800000c)
+![](https://leanote.com/api/file/getImage?fileId=5bced180fe73740c5800000c)
 
 浏览器存入了两条数据之后，查看数据库：
 
-![](leanote://file/getImage?fileId=5bced187fe73740c5800000d)
+![](https://leanote.com/api/file/getImage?fileId=5bced187fe73740c5800000d)
 
 数据成功存入，并且 h2 数据库没有存入，说明指定了 mysql 作为数据源， h2 的配置可有可无了。
 
@@ -1170,7 +1170,7 @@ public class BlogController {
 ```
 访问：
 
-![](leanote://file/getImage?fileId=5bced19dfe73740c5800000e)
+![](https://leanote.com/api/file/getImage?fileId=5bced19dfe73740c5800000e)
 
 ## 五、集成 BootStrap
 
@@ -1210,9 +1210,9 @@ public class BlogController {
 
 响应式：viewport 尺寸的增加，系统会自动分为最多 12 格：
 
-![](leanote://file/getImage?fileId=5bced1a8fe73740c5800000f)
+![](https://leanote.com/api/file/getImage?fileId=5bced1a8fe73740c5800000f)
 
-![](leanote://file/getImage?fileId=5bced1b1fe73740c58000010)
+![](https://leanote.com/api/file/getImage?fileId=5bced1b1fe73740c58000010)
 
 实例：
 ```html
@@ -1241,7 +1241,7 @@ public class BlogController {
 ```
 效果：
 
-![](leanote://file/getImage?fileId=5bced1c0fe73740c58000011)
+![](https://leanote.com/api/file/getImage?fileId=5bced1c0fe73740c58000011)
 
 **常用组件、样式**
 
@@ -1281,39 +1281,39 @@ public class BlogController {
 
 需求/核心功能：
 
-![](leanote://file/getImage?fileId=5bced1cefe73740c58000012)
+![](https://leanote.com/api/file/getImage?fileId=5bced1cefe73740c58000012)
 
 用户管理：
 
-![](leanote://file/getImage?fileId=5bced1d4fe73740c58000013)
+![](https://leanote.com/api/file/getImage?fileId=5bced1d4fe73740c58000013)
 
 安全设置：
 
-![](leanote://file/getImage?fileId=5bced1dcfe73740c58000014)
+![](https://leanote.com/api/file/getImage?fileId=5bced1dcfe73740c58000014)
 
 博客管理：
 
-![](leanote://file/getImage?fileId=5bced1e6fe73740c58000015)
+![](https://leanote.com/api/file/getImage?fileId=5bced1e6fe73740c58000015)
 
 评论管理：
 
-![](leanote://file/getImage?fileId=5bced1effe73740c58000016)
+![](https://leanote.com/api/file/getImage?fileId=5bced1effe73740c58000016)
 
 点赞管理：
 
-![](leanote://file/getImage?fileId=5bced1f7fe73740c58000017)
+![](https://leanote.com/api/file/getImage?fileId=5bced1f7fe73740c58000017)
 
 分类管理：
 
-![](leanote://file/getImage?fileId=5bced1fffe73740c58000018)
+![](https://leanote.com/api/file/getImage?fileId=5bced1fffe73740c58000018)
 
 标签管理：
 
-![](leanote://file/getImage?fileId=5bced207fe73740c58000019)
+![](https://leanote.com/api/file/getImage?fileId=5bced207fe73740c58000019)
 
 首页管理：
 
-![](leanote://file/getImage?fileId=5bced20ffe73740c5800001a)
+![](https://leanote.com/api/file/getImage?fileId=5bced20ffe73740c5800001a)
 
 ## 七、权限管理
 
@@ -1601,7 +1601,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 **需求分析**
 
-![](leanote://file/getImage?fileId=5bced225fe73740c5800001b)
+![](https://leanote.com/api/file/getImage?fileId=5bced225fe73740c5800001b)
 
 注册
 
