@@ -1,4 +1,86 @@
-# 基于 Spring Boot 技术栈构建企业级博客系统的开发记录
+![博客首页](blog-img/image_39.png)
+
+> **基于 Spring Boot 技术栈构建企业级博客系统的开发记录**</br>该项目构建基于慕课网实战视频，目的在于通过博客系统的开发了解企业级开发的完整流程，学习掌握 Spring Boot 及其周边前沿技术。
+
+<!-- ## 技术栈 -->
+
+|前端||
+|--------------------|--------------------|
+|BootStrap|样式框架|
+|Thymeleaf| 模板引擎 |
+|JQuery| js 函数库 |
+|HTML5| 页面结构|
+|JavaScript| 脚本|
+|CSS|样式|
+
+|后端||
+|--------------------|--------------------|
+|Spring|解耦合|
+|Spring MVC| 控制层框架 |
+|Spring Boot| 快捷开发，整合 Spring 全家桶 |
+|Spring Data| 持久层框架，简化数据库操作 |
+|Spring Security| 安全权限控制 |
+|Hibernate| 遵循 JPA 规范的持久层实现 |
+
+
+|数据存储||
+|--------------------|--------------------|
+|MySql| 关系型数据库 |
+|H2| 内存数据库 |
+|MongoDB| 文件存储|
+
+|其他||
+|--------------------|--------------------|
+|Elastic Search| 全文检索 |
+|Gradle| 项目构建 |
+
+|插件||
+|--------------------|--------------------|
+|catalog-generator.js|博客目录生成插件|
+|tether.js|下拉框插件|
+|thinker-md.vendor.js|markdown 编辑器|
+|toastr.min.js|提示框|
+|cropbox.js|图片裁剪|
+|...|...|
+
+<!-- TOC -->
+
+- [一、 使用 Gradle / Spring Initializer 搭建 Spring Boot 运行环境](#一-使用-gradle--spring-initializer-搭建-spring-boot-运行环境)
+    - [1.1 安装 Gradle 环境](#11-安装-gradle-环境)
+    - [1.2 使用 Spring Initializer 快速生成 Spring Boot 应用](#12-使用-spring-initializer-快速生成-spring-boot-应用)
+    - [1.3 项目结构](#13-项目结构)
+    - [1.4 自定义存储仓库](#14-自定义存储仓库)
+    - [1.5 编写程序代码及测试用例](#15-编写程序代码及测试用例)
+    - [1.6 以 Gradle / Wrapper 编译项目](#16-以-gradle--wrapper-编译项目)
+    - [1.7 Gradle 项目运行的三种方式](#17-gradle-项目运行的三种方式)
+- [二、 Thymeleaf 模板引擎](#二-thymeleaf-模板引擎)
+    - [2.1 Thymeleaf](#21-thymeleaf)
+    - [2.2 标准方言（语法）](#22-标准方言语法)
+    - [2.3 表达式基本对象](#23-表达式基本对象)
+    - [2.4 集成 Spring Boot](#24-集成-spring-boot)
+    - [2.5 Thymeleaf 实战](#25-thymeleaf-实战)
+- [三、 Spring Data JPA 数据持久化](#三-spring-data-jpa-数据持久化)
+    - [3.1 JPA 简介](#31-jpa-简介)
+    - [3.2 JPA 核心概念](#32-jpa-核心概念)
+    - [3.3 Spring Data JPA 使用概括](#33-spring-data-jpa-使用概括)
+    - [3.4. Spring Data JPA / Hibernate / Spring Boot 集成](#34-spring-data-jpa--hibernate--spring-boot-集成)
+    - [3.5 数据持久化实战](#35-数据持久化实战)
+        - [3.5.1 H2 内存数据库](#351-h2-内存数据库)
+        - [3.5.2 MySql 物理数据库](#352-mysql-物理数据库)
+- [四、Elastic Search 全文搜索](#四elastic-search-全文搜索)
+    - [4.1 集成 Spring Boot](#41-集成-spring-boot)
+- [五、集成 BootStrap](#五集成-bootstrap)
+- [六、Spring Security 安全权限框架](#六spring-security-安全权限框架)
+- [七、用户管理](#七用户管理)
+- [八、角色权限管理](#八角色权限管理)
+- [九、博客管理](#九博客管理)
+- [十、评论管理](#十评论管理)
+- [十一、点赞管理](#十一点赞管理)
+- [十二、分类管理](#十二分类管理)
+- [十三、标签管理](#十三标签管理)
+- [十四、首页搜索](#十四首页搜索)
+
+<!-- /TOC -->
 
 ## 一、 使用 Gradle / Spring Initializer 搭建 Spring Boot 运行环境
 
@@ -12,13 +94,13 @@
 
 命令行 `gradle -v` 查看版本：
 
-![](https://leanote.com/api/file/getImage?fileId=5bced085fe73740c58000002)
+![](blog-img/image_5.png)
 
 ### 1.2 使用 Spring Initializer 快速生成 Spring Boot 应用
 
 使用 Spring 快速开始[向导](https://start.spring.io/)，创建一个项目并下载到本地。  
 
-![](https://leanote.com/api/file/getImage?fileId=5bced0cefe73740c58000003)
+![](blog-img\image_6.png)
 
 使用 gradle 编译项目，进入根目录执行：
 
@@ -28,7 +110,7 @@ gradle build
 
 编译完成之后会在目录生成一个 build 文件夹，里面存放着编译后的文件以及安装的jar。
 
-![](https://leanote.com/api/file/getImage?fileId=5bced0e5fe73740c58000004)
+![](blog-img/image_8.png)
 
 运行这个 jar ：
 
@@ -36,13 +118,13 @@ gradle build
 java -jar spring-boot-blog-0.0.1-SNAPSHOT.jar
 ```
 
-![](https://leanote.com/api/file/getImage?fileId=5bced0fcfe73740c58000005)
+![](blog-img/image_10.png)
 
 一个简单的 spring  boot 应用启动起来了，接下来可以正常访问。
 
 ### 1.3 项目结构
 
-![](https://leanote.com/api/file/getImage?fileId=5bced106fe73740c58000006)
+![](blog-img/image_11.png)
 
 - `.gradle`  gradle 运行时相关配置文件，不用多说了。
 - `文件夹 build` 项目编译后路径
@@ -162,11 +244,11 @@ public class SpringBootBlogApplicationTests {
 gradlew build
 ```
 
-![](https://leanote.com/api/file/getImage?fileId=5bced119fe73740c58000007)
+![](blog-img/image_12.png)
 
 运行：
 
-![](https://leanote.com/api/file/getImage?fileId=5bced122fe73740c58000008)
+![](blog-img/image_13.png)
 
 ### 1.7 Gradle 项目运行的三种方式
 
@@ -180,7 +262,7 @@ gradlew build
 gradle bootRun / gradlew bootRun (wrapper 方式)
 ```
 
-![](https://leanote.com/api/file/getImage?fileId=5bced12ffe73740c58000009)
+![](blog-img/image_14.png)
 
 ## 二、 Thymeleaf 模板引擎
 
@@ -906,11 +988,11 @@ spring:
 
 访问控制台： http://localhost:8080/h2-console/
 
-![](https://leanote.com/api/file/getImage?fileId=5bced16bfe73740c5800000a)
+![](blog-img/image_15.png)
 
 注意：JDBC URL 需要手动更改为 `jdbc:h2:mem:testdb` 才能正常访问，否则看不到保存的表。接着点击 `connect` 
 
-![](https://leanote.com/api/file/getImage?fileId=5bced173fe73740c5800000b)
+![](blog-img/image_17.png)
 
 
 
@@ -948,11 +1030,11 @@ spring:
 
 启动项目，可以看到 hibernate 自动创建了表结构，字段和实体属性一一对应。
 
-![](https://leanote.com/api/file/getImage?fileId=5bced180fe73740c5800000c)
+![](blog-img/image_18.png)
 
 浏览器存入了两条数据之后，查看数据库：
 
-![](https://leanote.com/api/file/getImage?fileId=5bced187fe73740c5800000d)
+![](blog-img/image_19.png)
 
 数据成功存入，并且 h2 数据库没有存入，说明指定了 mysql 作为数据源， h2 的配置可有可无了。
 
@@ -1170,7 +1252,7 @@ public class BlogController {
 ```
 访问：
 
-![](https://leanote.com/api/file/getImage?fileId=5bced19dfe73740c5800000e)
+![](blog-img/image_7.png)
 
 ## 五、集成 BootStrap
 
@@ -1210,9 +1292,9 @@ public class BlogController {
 
 响应式：viewport 尺寸的增加，系统会自动分为最多 12 格：
 
-![](https://leanote.com/api/file/getImage?fileId=5bced1a8fe73740c5800000f)
+![](blog-img/image_9.png)
 
-![](https://leanote.com/api/file/getImage?fileId=5bced1b1fe73740c58000010)
+![](blog-img/image_22.png)
 
 实例：
 ```html
@@ -1241,7 +1323,7 @@ public class BlogController {
 ```
 效果：
 
-![](https://leanote.com/api/file/getImage?fileId=5bced1c0fe73740c58000011)
+![](blog-img/image_23.png)
 
 **常用组件、样式**
 
@@ -1277,45 +1359,7 @@ public class BlogController {
 
 - Tooltip 提示
 
-## 六、需求分析 / 原型设计
-
-需求/核心功能：
-
-![](https://leanote.com/api/file/getImage?fileId=5bced1cefe73740c58000012)
-
-用户管理：
-
-![](https://leanote.com/api/file/getImage?fileId=5bced1d4fe73740c58000013)
-
-安全设置：
-
-![](https://leanote.com/api/file/getImage?fileId=5bced1dcfe73740c58000014)
-
-博客管理：
-
-![](https://leanote.com/api/file/getImage?fileId=5bced1e6fe73740c58000015)
-
-评论管理：
-
-![](https://leanote.com/api/file/getImage?fileId=5bced1effe73740c58000016)
-
-点赞管理：
-
-![](https://leanote.com/api/file/getImage?fileId=5bced1f7fe73740c58000017)
-
-分类管理：
-
-![](https://leanote.com/api/file/getImage?fileId=5bced1fffe73740c58000018)
-
-标签管理：
-
-![](https://leanote.com/api/file/getImage?fileId=5bced207fe73740c58000019)
-
-首页管理：
-
-![](https://leanote.com/api/file/getImage?fileId=5bced20ffe73740c5800001a)
-
-## 七、权限管理
+## 六、Spring Security 安全权限框架
 
 **角色**
 
@@ -1332,8 +1376,6 @@ public class BlogController {
 - 隐式访问控制：与角色关联的访问控制
 
 - 显式访问控制：与权限关联的访问控制（更灵活）
-
-### 7.1 Spring Security
 
 **安全领域核心概念**
 
@@ -1387,7 +1429,7 @@ public class BlogController {
 
 - Test - spring-secutiry-test.jar
 
-### 7.2 与 Spring Boot 集成
+**与 Spring Boot 集成**
 
 环境：
 
@@ -1453,155 +1495,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-## 八、博客系统 —— 整体框架搭建
+## 七、用户管理
 
-控制器：
+**需求/核心功能**
 
-- MainController 主页控制器
-
-- BlogController 博客控制器
-
-- UserspaceController 用户主页控制器
-
-- AdminController 管理员控制器
-
-- UserController 用户控制器
-
-原型设计：
-
-- 略
-
-
-### 8.1 API
-
-**index：主页，包含最新、最热文章，最热标签，最热用户等**
-
-- `/blogs`: [get]
-    - order：排序类型，new/hot，默认是 new
-    - keyword：搜索关键字。博客的标签，即为关键字。
-    - async：是否为异步请求页面
-    - pageIndex
-    - pageSize
-
-**user space：用户主页空间**
-
-- `/u/{username}`: [get] 具体某个用户的主页
-    - username 用户账号
-
-- `/u/{username}/profile`: [get] 获取个人设置页面
-    - username 用户账号
-
-- `/u/{username}/profile`: [post] 保存个人设置页面
-    - username 用户账号
-    - User 待保存的对象
-
- - `/u/{username}/avatar`: [get] 获取个人头像
-    - username 用户账号
-
-- `/u/{username}/avatar`: [post] 保存个人头像
-    - username 用户账号
-
-- `/u/{username}/blogs`: [get] 查询用户博客
-    - order：排序类型，new/hot，默认是 new
-    - catalog：博客分类 ID，默认为空
-    - keyword：搜索关键字。博客的标签，即为关键字。
-    - async：是否为异步请求页面
-    - pageIndex
-    - pageSize
-
-- `/u/{username}/blogs/edits`: [get] 获取新增博客页面
-    - username 用户账号
-
-- `/u/{username}/blogs/edit`: [post] 新增、编辑博客页面
-    - username 用户账号
-    - Blog 待保存的博客对象
-
-- `/u/{username}/blogs/edit/{id}`: [get] 获取编辑博客的页面
-    - username 用户账号
-    - id 博客ID
-
-- `/u/{username}/blogs/edit/{id}`: [delete] 删除博客
-    - username 用户账号
-    - id 博客ID
-
-<!-- **login：登陆**
-
-- `/login`: [get] 获取登陆页面
-
-- `/login`: [post] 登陆
-    - username
-    - password
-    - remember-me 是否记住我
-
-- `/register`: [get] 获取注册页面
-
-- `/register`: [post] 注册成功跳转至登陆页面
-    - User 待保存的用户对象 -->
-
-<!-- **users：用户管理**
-
-- `/users`: [get] 用户列表
-    - async
-    - pageIndex
-    - pageSize
-    - name 用户名称关键字
-
-- `/users/add`: [get] 获取添加用户页面
-
-- `/users/add`: [post] 保存添加的用户
-    - User
-    - authorityId 角色ID
-
-- `/users/{id}`: [delete] 删除用户
-    - id
-
-- `/users/edit/{id}`: [get] 获取某个具体用户编辑页面
-    - id -->
-
-**comments：评论管理**
-
-- `/comments`: [get] 获取评论列表
-    - blogid 博客id
-
-- `/comments`: [post] 保存评论
-    - blogid 博客id
-      commentContent 评论内容
-
-- `/comments/{id}`: [delete] 删除评论
-    - blogid 博客id
-    - id 评论id
-
-**votes：点赞管理**
-
-- `/votes`: [post] 保存点赞
-    - blogid 博客id
-
-- `/votes/{id}`: [delete] 删除点赞 
-    - blogid 博客id
-    - id 点赞id
-
-**catalogs：分类管理**
-
-- `/catalogs`: [get] 获取用户博客的分类列表
-    - username 用户账号
-
-- `/catalogs`: [post] 保存用户博客的分类
-    - username 用户账号
-    - CatalogVO 包含 username、Catalog
-
-- `/catalogs/edit`: [get] 获取编辑分类界面
-
-- `/catalogs/edit/{id}`: [get] 获取某ID分类编辑的分类界面
-
-- `/catalogs/{id}`: [delete] 删除分类
-    - id 分类ID
-    - username 用户账号
-
-## 九、用户管理
+![](blog-img/image_24.png)
 
 **需求分析**
 
-![](https://leanote.com/api/file/getImage?fileId=5bced225fe73740c5800001b)
+![](blog-img/image_25.png)
 
 注册
 
@@ -1753,10 +1655,188 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 [解决使用 bootstrap 更新操作时 —— 模态框回显传值问题]()
 
-## 九、角色管理
+## 八、角色权限管理
 
-## 十、权限管理
+**需求分析**
 
+![](blog-img/image_26.png)
+
+
+
+## 九、博客管理
+
+**需求分析**
+
+![博客管理](blog-img/image_27.png)
+
+- 用户主页实现
+
+- 个人资料设置
+
+- 个人头像更换
+
+**user space API：用户主页空间接口**
+
+- `/blogs`: [get]
+    - order：排序类型，new/hot，默认是 new
+    - keyword：搜索关键字。博客的标签，即为关键字。
+    - async：是否为异步请求页面
+    - pageIndex
+    - pageSize
+    
+- `/u/{username}`: [get] 具体某个用户的主页
+    - username 用户账号
+
+- `/u/{username}/profile`: [get] 获取个人设置页面
+    - username 用户账号
+
+- `/u/{username}/profile`: [post] 保存个人设置页面
+    - username 用户账号
+    - User 待保存的对象
+
+ - `/u/{username}/avatar`: [get] 获取个人头像
+    - username 用户账号
+
+- `/u/{username}/avatar`: [post] 保存个人头像
+    - username 用户账号
+
+- `/u/{username}/blogs`: [get] 查询用户博客
+    - order：排序类型，new/hot，默认是 new
+    - catalog：博客分类 ID，默认为空
+    - keyword：搜索关键字。博客的标签，即为关键字。
+    - async：是否为异步请求页面
+    - pageIndex
+    - pageSize
+
+- `/u/{username}/blogs/edits`: [get] 获取新增博客页面
+    - username 用户账号
+
+- `/u/{username}/blogs/edit/{id}`: [get] 获取编辑博客的页面
+    - username 用户账号
+    - id 博客ID
+
+- `/u/{username}/blogs/edit`: [post] 保存博客
+    - username 用户账号
+    - Blog 待保存的博客对象
+
+- `/u/{username}/blogs/delete/{id}`: [delete] 删除博客
+    - username 用户账号
+    - id 博客ID
+
+- `/u/{username}/blogs/{id}`: [get] 获取博客展示页面
+    - username 用户账号
+    - id 博客ID
+    
+
+**后台实现**
+
+添加 markdown 解析器的依赖：
+
+```gradle
+compile('es.nitaur.markdown:txtmark:0.16')
+```
+
+**MongoDB File Server 文件服务器** 
+
+    https://github.com/waylau/mongodb-file-server
+
+**用户个人设置**
+
+## 十、评论管理
+
+**需求分析**
+
+![](blog-img/image_28.png)
+
+**comments API：评论管理接口**
+
+- `/comments`: [get] 获取评论列表
+    - blogid 博客id
+
+- `/comments`: [post] 保存评论
+    - blogid 博客id
+      commentContent 评论内容
+
+- `/comments/{id}`: [delete] 删除评论
+    - blogid 博客id
+    - id 评论id
+
+
+## 十一、点赞管理
+
+**需求分析**
+
+![](blog-img/image_34.png)
+
+**votes API：点赞管理接口**
+
+- `/votes`: [post] 保存点赞
+    - blogid 博客id
+
+- `/votes/{id}`: [delete] 删除点赞 
+    - blogid 博客id
+    - id 点赞id
+
+
+## 十二、分类管理
+
+**需求分析**
+
+![](blog-img/image_29.png)
+
+**catalogs API：分类管理接口**
+
+- `/catalogs`: [get] 获取用户博客的分类列表
+    - username 用户账号
+
+- `/catalogs`: [post] 保存用户博客的分类
+    - username 用户账号
+    - CatalogVO 包含 username、Catalog
+
+- `/catalogs/edit`: [get] 获取编辑分类界面
+
+- `/catalogs/edit/{id}`: [get] 获取某ID分类编辑的分类界面
+
+- `/catalogs/{id}`: [delete] 删除分类
+    - id 分类ID
+    - username 用户账号
+
+## 十三、标签管理
+
+**需求分析**
+
+![](blog-img/image_33.png)
+
+使用插件：Jquery Tags Input 1.3.6
+
+http://xoxco.com/projects/code/tagsinput
+
+
+## 十四、首页搜索
+
+**需求分析**
+
+![](blog-img/image_30.png)
+
+**index API：包含最新、最热文章、最热标签、最热用户等**
+
+- `/blogs`: [get]
+    - order：排序类型，new/hot
+    - keyword：搜索关键字（包含博客标签）
+    - async：是否异步
+    - pageIndex
+    - pageSize
+
+
+环境：
+
+- Elastic Search 2.4.4
+
+- Spring Data Elastic Search 2.1.4.RELEASE -- Spring Boot 对 ES 的支持模块
+
+- JNA 4.3.0 -- ES 依赖模块
+
+<!-- ## 十五、总结 -->
 
 
 

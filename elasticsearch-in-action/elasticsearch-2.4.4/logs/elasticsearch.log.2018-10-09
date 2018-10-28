@@ -1,0 +1,1072 @@
+[2018-10-09 16:08:02,794][INFO ][node                     ] [S'byll] version[2.4.4], pid[1688], build[fcbb46d/2017-01-03T11:33:16Z]
+[2018-10-09 16:08:02,795][INFO ][node                     ] [S'byll] initializing ...
+[2018-10-09 16:08:03,462][INFO ][plugins                  ] [S'byll] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-10-09 16:08:03,502][INFO ][env                      ] [S'byll] using [1] data paths, mounts [[Partition-2 (D:)]], net usable_space [54.5gb], net total_space [61.7gb], spins? [unknown], types [NTFS]
+[2018-10-09 16:08:03,502][INFO ][env                      ] [S'byll] heap size [990.7mb], compressed ordinary object pointers [true]
+[2018-10-09 16:08:06,937][INFO ][node                     ] [S'byll] initialized
+[2018-10-09 16:08:06,938][INFO ][node                     ] [S'byll] starting ...
+[2018-10-09 16:08:07,971][INFO ][transport                ] [S'byll] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2018-10-09 16:08:07,979][INFO ][discovery                ] [S'byll] elasticsearch/nBFjNTljQs27YJsE0hHKiA
+[2018-10-09 16:16:03,997][INFO ][node                     ] [Isbisa] version[2.4.4], pid[8196], build[fcbb46d/2017-01-03T11:33:16Z]
+[2018-10-09 16:16:03,998][INFO ][node                     ] [Isbisa] initializing ...
+[2018-10-09 16:16:04,869][INFO ][plugins                  ] [Isbisa] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-10-09 16:16:04,901][INFO ][env                      ] [Isbisa] using [1] data paths, mounts [[Partition-2 (D:)]], net usable_space [54.5gb], net total_space [61.7gb], spins? [unknown], types [NTFS]
+[2018-10-09 16:16:04,901][INFO ][env                      ] [Isbisa] heap size [990.7mb], compressed ordinary object pointers [true]
+[2018-10-09 16:16:08,296][INFO ][node                     ] [Isbisa] initialized
+[2018-10-09 16:16:08,296][INFO ][node                     ] [Isbisa] starting ...
+[2018-10-09 16:16:09,328][INFO ][transport                ] [Isbisa] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2018-10-09 16:16:09,333][INFO ][discovery                ] [Isbisa] elasticsearch/2V0N3T8lRhS-cIYTCQ82gA
+[2018-10-09 16:16:13,384][INFO ][cluster.service          ] [Isbisa] new_master {Isbisa}{2V0N3T8lRhS-cIYTCQ82gA}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2018-10-09 16:16:13,579][INFO ][gateway                  ] [Isbisa] recovered [0] indices into cluster_state
+[2018-10-09 16:16:15,223][INFO ][http                     ] [Isbisa] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2018-10-09 16:16:15,225][INFO ][node                     ] [Isbisa] started
+[2018-10-09 16:16:26,743][INFO ][cluster.metadata         ] [Isbisa] [blog] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2018-10-09 16:16:27,245][INFO ][cluster.metadata         ] [Isbisa] [blog] create_mapping [blog]
+[2018-10-09 16:16:27,382][INFO ][cluster.routing.allocation] [Isbisa] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[blog][4]] ...]).
+[2018-10-09 16:16:28,692][INFO ][cluster.metadata         ] [Isbisa] [blog] update_mapping [blog]
+[2018-10-09 16:19:04,059][DEBUG][action.search            ] [Isbisa] [12] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [12]];
+Caused by: SearchContextMissingException[No search context found for id [12]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:19:04,061][DEBUG][action.search            ] [Isbisa] [14] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [14]];
+Caused by: SearchContextMissingException[No search context found for id [14]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:19:04,060][DEBUG][action.search            ] [Isbisa] [13] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [13]];
+Caused by: SearchContextMissingException[No search context found for id [13]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:19:04,061][DEBUG][action.search            ] [Isbisa] [11] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [11]];
+Caused by: SearchContextMissingException[No search context found for id [11]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:19:04,061][DEBUG][action.search            ] [Isbisa] [15] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [15]];
+Caused by: SearchContextMissingException[No search context found for id [15]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:20:16,797][DEBUG][action.search            ] [Isbisa] [21] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [21]];
+Caused by: SearchContextMissingException[No search context found for id [21]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:20:16,798][DEBUG][action.search            ] [Isbisa] [24] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [24]];
+Caused by: SearchContextMissingException[No search context found for id [24]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:20:16,798][DEBUG][action.search            ] [Isbisa] [25] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [25]];
+Caused by: SearchContextMissingException[No search context found for id [25]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:20:16,798][DEBUG][action.search            ] [Isbisa] [23] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [23]];
+Caused by: SearchContextMissingException[No search context found for id [23]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:20:16,798][DEBUG][action.search            ] [Isbisa] [22] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [22]];
+Caused by: SearchContextMissingException[No search context found for id [22]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:20:53,402][DEBUG][action.search            ] [Isbisa] [32] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [32]];
+Caused by: SearchContextMissingException[No search context found for id [32]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:20:53,404][DEBUG][action.search            ] [Isbisa] [35] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [35]];
+Caused by: SearchContextMissingException[No search context found for id [35]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:20:53,403][DEBUG][action.search            ] [Isbisa] [34] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [34]];
+Caused by: SearchContextMissingException[No search context found for id [34]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:20:53,403][DEBUG][action.search            ] [Isbisa] [33] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [33]];
+Caused by: SearchContextMissingException[No search context found for id [33]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:20:53,403][DEBUG][action.search            ] [Isbisa] [31] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [31]];
+Caused by: SearchContextMissingException[No search context found for id [31]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:21:12,998][DEBUG][action.search            ] [Isbisa] [41] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [41]];
+Caused by: SearchContextMissingException[No search context found for id [41]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:21:12,999][DEBUG][action.search            ] [Isbisa] [45] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [45]];
+Caused by: SearchContextMissingException[No search context found for id [45]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:21:12,998][DEBUG][action.search            ] [Isbisa] [44] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [44]];
+Caused by: SearchContextMissingException[No search context found for id [44]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:21:12,998][DEBUG][action.search            ] [Isbisa] [43] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [43]];
+Caused by: SearchContextMissingException[No search context found for id [43]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:21:12,998][DEBUG][action.search            ] [Isbisa] [42] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [42]];
+Caused by: SearchContextMissingException[No search context found for id [42]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:22:06,424][DEBUG][action.search            ] [Isbisa] [51] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [51]];
+Caused by: SearchContextMissingException[No search context found for id [51]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:22:06,427][DEBUG][action.search            ] [Isbisa] [55] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [55]];
+Caused by: SearchContextMissingException[No search context found for id [55]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:22:06,425][DEBUG][action.search            ] [Isbisa] [54] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [54]];
+Caused by: SearchContextMissingException[No search context found for id [54]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:22:06,425][DEBUG][action.search            ] [Isbisa] [53] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [53]];
+Caused by: SearchContextMissingException[No search context found for id [53]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:22:06,425][DEBUG][action.search            ] [Isbisa] [52] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [52]];
+Caused by: SearchContextMissingException[No search context found for id [52]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:23:00,890][DEBUG][action.search            ] [Isbisa] [62] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [62]];
+Caused by: SearchContextMissingException[No search context found for id [62]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:23:00,891][DEBUG][action.search            ] [Isbisa] [65] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [65]];
+Caused by: SearchContextMissingException[No search context found for id [65]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:23:00,891][DEBUG][action.search            ] [Isbisa] [64] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [64]];
+Caused by: SearchContextMissingException[No search context found for id [64]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:23:00,891][DEBUG][action.search            ] [Isbisa] [63] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [63]];
+Caused by: SearchContextMissingException[No search context found for id [63]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:23:00,890][DEBUG][action.search            ] [Isbisa] [61] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [61]];
+Caused by: SearchContextMissingException[No search context found for id [61]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:24:37,734][DEBUG][action.search            ] [Isbisa] [71] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [71]];
+Caused by: SearchContextMissingException[No search context found for id [71]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:24:37,734][DEBUG][action.search            ] [Isbisa] [75] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [75]];
+Caused by: SearchContextMissingException[No search context found for id [75]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:24:37,734][DEBUG][action.search            ] [Isbisa] [72] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [72]];
+Caused by: SearchContextMissingException[No search context found for id [72]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:24:37,734][DEBUG][action.search            ] [Isbisa] [74] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [74]];
+Caused by: SearchContextMissingException[No search context found for id [74]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:24:37,734][DEBUG][action.search            ] [Isbisa] [73] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [73]];
+Caused by: SearchContextMissingException[No search context found for id [73]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:25:54,579][DEBUG][action.search            ] [Isbisa] [81] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [81]];
+Caused by: SearchContextMissingException[No search context found for id [81]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:25:54,583][DEBUG][action.search            ] [Isbisa] [85] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [85]];
+Caused by: SearchContextMissingException[No search context found for id [85]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:25:54,579][DEBUG][action.search            ] [Isbisa] [84] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [84]];
+Caused by: SearchContextMissingException[No search context found for id [84]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:25:54,579][DEBUG][action.search            ] [Isbisa] [83] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [83]];
+Caused by: SearchContextMissingException[No search context found for id [83]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 16:25:54,579][DEBUG][action.search            ] [Isbisa] [82] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [82]];
+Caused by: SearchContextMissingException[No search context found for id [82]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 17:19:57,242][DEBUG][action.search            ] [Isbisa] [91] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [91]];
+Caused by: SearchContextMissingException[No search context found for id [91]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 17:19:57,243][DEBUG][action.search            ] [Isbisa] [95] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [95]];
+Caused by: SearchContextMissingException[No search context found for id [95]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 17:19:57,243][DEBUG][action.search            ] [Isbisa] [94] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [94]];
+Caused by: SearchContextMissingException[No search context found for id [94]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 17:19:57,243][DEBUG][action.search            ] [Isbisa] [93] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [93]];
+Caused by: SearchContextMissingException[No search context found for id [93]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 17:19:57,243][DEBUG][action.search            ] [Isbisa] [92] Failed to execute query phase
+RemoteTransportException[[Isbisa][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [92]];
+Caused by: SearchContextMissingException[No search context found for id [92]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:06:13,344][INFO ][bootstrap                ] running graceful exit on windows
+[2018-10-09 18:06:13,345][INFO ][node                     ] [Isbisa] stopping ...
+[2018-10-09 18:06:13,398][INFO ][node                     ] [Isbisa] stopped
+[2018-10-09 18:06:13,398][INFO ][node                     ] [Isbisa] closing ...
+[2018-10-09 18:06:13,406][INFO ][node                     ] [Isbisa] closed
+[2018-10-09 18:06:22,627][INFO ][node                     ] [Mantis] version[2.4.4], pid[8852], build[fcbb46d/2017-01-03T11:33:16Z]
+[2018-10-09 18:06:22,628][INFO ][node                     ] [Mantis] initializing ...
+[2018-10-09 18:06:23,303][INFO ][plugins                  ] [Mantis] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-10-09 18:06:23,334][INFO ][env                      ] [Mantis] using [1] data paths, mounts [[Partition-2 (D:)]], net usable_space [54.5gb], net total_space [61.7gb], spins? [unknown], types [NTFS]
+[2018-10-09 18:06:23,334][INFO ][env                      ] [Mantis] heap size [990.7mb], compressed ordinary object pointers [true]
+[2018-10-09 18:06:26,405][INFO ][node                     ] [Mantis] initialized
+[2018-10-09 18:06:26,406][INFO ][node                     ] [Mantis] starting ...
+[2018-10-09 18:06:27,478][INFO ][transport                ] [Mantis] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2018-10-09 18:06:27,485][INFO ][discovery                ] [Mantis] elasticsearch/MAohctznQ8qtZxYabrqU9A
+[2018-10-09 18:06:31,537][INFO ][cluster.service          ] [Mantis] new_master {Mantis}{MAohctznQ8qtZxYabrqU9A}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2018-10-09 18:06:31,678][INFO ][gateway                  ] [Mantis] recovered [1] indices into cluster_state
+[2018-10-09 18:06:32,476][INFO ][cluster.routing.allocation] [Mantis] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[blog][0], [blog][1], [blog][2], [blog][1], [blog][0]] ...]).
+[2018-10-09 18:06:33,153][INFO ][http                     ] [Mantis] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2018-10-09 18:06:33,153][INFO ][node                     ] [Mantis] started
+[2018-10-09 18:06:55,208][DEBUG][action.search            ] [Mantis] [4] Failed to execute query phase
+RemoteTransportException[[Mantis][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [4]];
+Caused by: SearchContextMissingException[No search context found for id [4]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:06:55,218][DEBUG][action.search            ] [Mantis] [3] Failed to execute query phase
+RemoteTransportException[[Mantis][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [3]];
+Caused by: SearchContextMissingException[No search context found for id [3]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:06:55,209][DEBUG][action.search            ] [Mantis] [1] Failed to execute query phase
+RemoteTransportException[[Mantis][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [1]];
+Caused by: SearchContextMissingException[No search context found for id [1]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:06:55,216][DEBUG][action.search            ] [Mantis] [5] Failed to execute query phase
+RemoteTransportException[[Mantis][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [5]];
+Caused by: SearchContextMissingException[No search context found for id [5]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:06:55,208][DEBUG][action.search            ] [Mantis] [2] Failed to execute query phase
+RemoteTransportException[[Mantis][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [2]];
+Caused by: SearchContextMissingException[No search context found for id [2]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,778][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0x3cba49f9, /127.0.0.1:8599 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,780][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0xec3c4f8b, /127.0.0.1:8598 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,780][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0xb8030c60, /127.0.0.1:8600 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,779][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0x0f2c60c4, /127.0.0.1:8595 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,779][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0x123d5535, /127.0.0.1:8594 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,779][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0x08d01905, /127.0.0.1:8605 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,779][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0xc70d1984, /127.0.0.1:8596 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,778][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0x9d465dff, /127.0.0.1:8592 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,802][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0x299b86bc, /127.0.0.1:8604 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,800][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0xf046edd9, /127.0.0.1:8597 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,798][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0x67ee1db8, /127.0.0.1:8602 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,796][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0x3964ba77, /127.0.0.1:8603 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,793][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0xa3166ed4, /127.0.0.1:8606 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:04,804][WARN ][transport.netty          ] [Mantis] exception caught on transport layer [[id: 0x8cb5ee08, /127.0.0.1:8601 => /127.0.0.1:9300]], closing connection
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:64)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:32,324][INFO ][node                     ] [Demolition Man] version[2.4.4], pid[11920], build[fcbb46d/2017-01-03T11:33:16Z]
+[2018-10-09 18:11:32,325][INFO ][node                     ] [Demolition Man] initializing ...
+[2018-10-09 18:11:33,062][INFO ][plugins                  ] [Demolition Man] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2018-10-09 18:11:33,093][INFO ][env                      ] [Demolition Man] using [1] data paths, mounts [[Partition-2 (D:)]], net usable_space [54.5gb], net total_space [61.7gb], spins? [unknown], types [NTFS]
+[2018-10-09 18:11:33,094][INFO ][env                      ] [Demolition Man] heap size [990.7mb], compressed ordinary object pointers [true]
+[2018-10-09 18:11:37,244][INFO ][node                     ] [Demolition Man] initialized
+[2018-10-09 18:11:37,245][INFO ][node                     ] [Demolition Man] starting ...
+[2018-10-09 18:11:39,090][INFO ][transport                ] [Demolition Man] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2018-10-09 18:11:39,096][INFO ][discovery                ] [Demolition Man] elasticsearch/X5MbHH1GSPeJ1n3nFo9wZg
+[2018-10-09 18:11:43,181][INFO ][cluster.service          ] [Demolition Man] new_master {Demolition Man}{X5MbHH1GSPeJ1n3nFo9wZg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2018-10-09 18:11:43,309][INFO ][gateway                  ] [Demolition Man] recovered [1] indices into cluster_state
+[2018-10-09 18:11:44,757][INFO ][cluster.routing.allocation] [Demolition Man] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[blog][0]] ...]).
+[2018-10-09 18:11:45,458][INFO ][http                     ] [Demolition Man] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2018-10-09 18:11:45,461][INFO ][node                     ] [Demolition Man] started
+[2018-10-09 18:11:59,748][DEBUG][action.search            ] [Demolition Man] [4] Failed to execute query phase
+RemoteTransportException[[Demolition Man][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [4]];
+Caused by: SearchContextMissingException[No search context found for id [4]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:59,758][DEBUG][action.search            ] [Demolition Man] [2] Failed to execute query phase
+RemoteTransportException[[Demolition Man][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [2]];
+Caused by: SearchContextMissingException[No search context found for id [2]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:59,756][DEBUG][action.search            ] [Demolition Man] [3] Failed to execute query phase
+RemoteTransportException[[Demolition Man][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [3]];
+Caused by: SearchContextMissingException[No search context found for id [3]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:59,756][DEBUG][action.search            ] [Demolition Man] [5] Failed to execute query phase
+RemoteTransportException[[Demolition Man][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [5]];
+Caused by: SearchContextMissingException[No search context found for id [5]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 18:11:59,755][DEBUG][action.search            ] [Demolition Man] [1] Failed to execute query phase
+RemoteTransportException[[Demolition Man][127.0.0.1:9300][indices:data/read/search[phase/scan/scroll]]]; nested: SearchContextMissingException[No search context found for id [1]];
+Caused by: SearchContextMissingException[No search context found for id [1]]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:626)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:318)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:433)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:430)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:77)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:378)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2018-10-09 20:13:16,174][INFO ][bootstrap                ] running graceful exit on windows
+[2018-10-09 20:13:16,177][INFO ][node                     ] [Demolition Man] stopping ...
+[2018-10-09 20:13:16,287][INFO ][node                     ] [Demolition Man] stopped
+[2018-10-09 20:13:16,288][INFO ][node                     ] [Demolition Man] closing ...
+[2018-10-09 20:13:16,299][INFO ][node                     ] [Demolition Man] closed
