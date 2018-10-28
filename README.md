@@ -1975,7 +1975,7 @@ mkdir data & cd data & mkdir db                                           # 创�
 mongod --dbpath=/opt/mongodb/data/db                                      # 启动 mongodb
 ```
 
-15.2 应用启动
+### 15.2 应用启动
 
 **后台运行**：`nohup cmd &`
 
