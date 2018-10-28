@@ -1663,9 +1663,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 **问题解决**
 
-[如何给通过脚本添加的元素注册事件]()
+[如何给通过脚本添加的元素注册事件](https://github.com/yuzh233/spring-boot-blog/blob/master/blog-user/%E5%A6%82%E4%BD%95%E7%BB%99%E9%80%9A%E8%BF%87%E8%84%9A%E6%9C%AC%E6%B7%BB%E5%8A%A0%E7%9A%84%20%E5%85%83%E7%B4%A0%E6%B3%A8%E5%86%8C%E4%BA%8B%E4%BB%B6.md)
 
-[解决使用 bootstrap 更新操作时 —— 模态框回显传值问题]()
+[解决使用 bootstrap 更新操作时 —— 模态框回显传值问题](https://github.com/yuzh233/spring-boot-blog/blob/master/blog-user/%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8%20bootstrap%20%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E6%97%B6%20%E2%80%94%E2%80%94%20%E6%A8%A1%E6%80%81%E6%A1%86%E5%9B%9E%E6%98%BE%E4%BC%A0%E5%80%BC%E9%97%AE%E9%A2%98.md)
 
 ## 八、角色权限管理
 
