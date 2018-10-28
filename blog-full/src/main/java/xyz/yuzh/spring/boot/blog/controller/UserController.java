@@ -110,35 +110,6 @@ public class UserController {
     }
 
     /**
-     * /login: [post] 登陆
-     *
-     * @return
-     */
-    /*@PostMapping(value = "/login")
-    public ResponseEntity<Response> login(@RequestParam(name = "username") String username,
-                                          @RequestParam(name = "password") String password,
-                                          @RequestParam(name = "rememberMe", required = false) boolean rememberMe) {
-        User user = userService.findByUsername(username);
-
-        if (user == null) {
-            throw new UserOperationException.VerificationFailedException();
-        }
-
-        *//*String rawPassword = user.getPassword();
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encodePasswd = encoder.encode(password);
-        boolean isMatch = encoder.matches(rawPassword, encodePasswd);
-
-        System.out.println(isMatch);*//*
-
-        if (!(user.getUsername().equals(username) && user.getPassword().equals(password))) {
-            throw new UserOperationException.VerificationFailedException();
-        }
-
-        return ResponseEntity.ok().body(new Response(true, "success"));
-    }*/
-
-    /**
      * /users/{id}: [delete] 删除用户
      *
      * @param id

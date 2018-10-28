@@ -1,8 +1,6 @@
 ![博客首页](blog-img/image_39.png)
 
-> **基于 Spring Boot 技术栈构建企业级博客系统的开发记录**</br>该项目构建基于慕课网实战视频，目的在于通过博客系统的开发了解企业级开发的完整流程，学习掌握 Spring Boot 及其周边前沿技术。
-
-<!-- ## 技术栈 -->
+> **基于 Spring Boot 技术栈构建企业级博客系统的开发记录**</br>- 该项目构建基于学习慕课网实战视频，目的在于通过博客系统的开发了解企业级开发的完整流程，学习掌握 Spring Boot 及其周边前沿技术。</br>- preview：http://blog.yuzh.xyz
 
 |前端||
 |--------------------|--------------------|
@@ -79,6 +77,8 @@
 - [十二、分类管理](#十二分类管理)
 - [十三、标签管理](#十三标签管理)
 - [十四、首页搜索](#十四首页搜索)
+- [十五、部署相关](#十五部署相关)
+    - [15.1 使用外部 MongoDB 存储文件服务器数据](#151-使用外部-mongodb-存储文件服务器数据)
 
 <!-- /TOC -->
 
@@ -1541,6 +1541,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 - `/users/edit/{id}`: [get] 获取某个具体用户编辑页面
     - id
 
+**流程图**
+
+首页用户注册：
+
+![首页用户注册](blog-img/register.jpg)
+
+后台管理-修改用户：
+
+![后台管理-修改用户](blog-img/admin-modify.jpg)
+
+
 **后台实现**
 
 1. 原有基础上添加依赖：
@@ -1661,6 +1672,78 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 ![](blog-img/image_26.png)
 
+- User 对象实现 UserDetails 接口
+  
+  - 实现 getAuthorities 方法，返回权限实体集合（需要自定义的 Authority 转为 SimpleGrantedAuthority）
+
+- UserServiceImpl 实现 UserDetailsService
+
+  - 实现 security 默认方法 loadUserByUsername，返回数据库查到的用户实体
+
+- SecurityConfig
+ 
+```java
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private static final String KEY = "yuzh.xyz";
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+        authenticationProvider.setUserDetailsService(userDetailsService);
+        return authenticationProvider;
+    }
+
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                    .antMatchers("/css/**", "/js/**", "/fonts/**", "/", "/index").permitAll()
+                    .antMatchers("/h2-console/**").permitAll()
+                    // 数据库中的字段因该是 ROLE_ADMIN ，这里不需要写 ROLE_ 前缀。
+                    .antMatchers(" /admins/**").hasRole("ADMIN")
+                    .and()
+                .formLogin()
+                    .loginPage("/login")
+                    .failureUrl("/login-error")
+                    .and()
+                .rememberMe().key(KEY)
+                    .and()
+                .exceptionHandling().accessDeniedPage("/403");
+
+
+        http.csrf().ignoringAntMatchers("/h2-console/**");
+        http.headers().frameOptions().sameOrigin();
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
+        auth.authenticationProvider(authenticationProvider());
+    }
+}
+```
+
+- 数据库的权限存入的格式例如 `ROLE_ADMIN` / `ROLE_USER`
+
+- 给需要授权才能访问的方法授权
+
+  - 给类授权：`@PreAuthorize("hasAuthority('ROLE_ADMIN')")  // 指定角色权限才能操作方法`
+
+  - 给方法授权：如当请求参数中的 username 被查询到已认证才允许进入方法
+  
+  ```java
+    @PostMapping("/{username}/blogs/edit")
+    @PreAuthorize("authentication.name.equals(#username)")
+  ```
+
+当表单发起 `/login` 的 post 请求并携带固定名称的 `username、password` 参数，security 会自动处理登陆，若登陆失败，跳到配置好的登陆失败页面。
 
 
 ## 九、博客管理
@@ -1836,7 +1919,70 @@ http://xoxco.com/projects/code/tagsinput
 
 - JNA 4.3.0 -- ES 依赖模块
 
-<!-- ## 十五、总结 -->
+## 十五、部署相关
+
+### 15.1 使用外部 MongoDB 存储文件服务器数据
+
+之前使用的是文件服务器内嵌的 mongoDB，项目停止之后图片数据不会保存。更换外部 mongoDB：
+
+**window 下**
+1. 下载 mongoDB https://www.mongodb.com/download-center#community
+
+2. 选择 msi 文件下载安装
+
+3. MongoDB将数据目录存储在 db 目录下。但是这个数据目录不会主动创建，需要手动创建。（如：d:/mongoData/db）
+
+4.  **修改文件服务器 build.gradle 文件，取消使用内嵌 mongoDB**
+
+    ```shell
+	// 添加  Embedded MongoDB 的依赖用于测试
+	// compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+    ```
+5. **修改文件服务器 application.yml 文件，连接独立的 MongoDB**
+
+    ```yml
+    # independent MongoDB server
+    spring.data.mongodb.uri=mongodb://localhost:27017/test
+    ```
+
+6. 从 MongoDB 目录的 bin 目录中执行 mongod.exe 文件
+
+    ```shell
+        如：C:\mongodb\bin\mongod --dbpath d:\mongoData\db
+    ```
+
+7. 运行 mongo.exe 命令即可连接 MongoDB
+
+6. 更多细节见：http://www.runoob.com/mongodb/mongodb-window-install.html
 
 
+**linux 下**
 
+```shell
+curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.6.tgz   # 下载
+tar -zxvf mongodb-linux-x86_64-3.0.6.tgz                                  # 解压
+mv mongodb-linux-x86_64-3.0.6.tgz mongodb                                 # 重命名
+
+vim /etc/profile                                                          # 配置环境变量
+---------------------
+export PATH=/opt/mongodb/bin:${PATH}
+---------------------
+resource /etc/profile                                                     # 刷新环境变量
+
+cd /opt/mongodb
+mkdir data & cd data & mkdir db                                           # 创建文件存放目录
+
+mongod --dbpath=/opt/mongodb/data/db                                      # 启动 mongodb
+```
+
+15.2 应用启动
+
+**后台运行**：`nohup cmd &`
+
+1. 启动 mongoDB
+
+2. 启动文件服务器（gradlew bootRun）
+
+3. 进入 elastic search，删除 data 文件（测试环境下），执行 `./elasticsearch`
+
+4. 启动 blog-full （gradlew bootRun）
