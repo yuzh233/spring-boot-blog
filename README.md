@@ -1,6 +1,6 @@
 ![博客首页](blog-img/image_39.png)
 
-> **基于 Spring Boot 技术栈构建企业级博客系统的开发记录**</br>- 该项目构建基于学习慕课网实战视频，目的在于通过博客系统的开发了解企业级开发的完整流程，学习掌握 Spring Boot 及其周边前沿技术。</br>- preview：http://blog.yuzh.xyz
+> **基于 Spring Boot 技术栈构建企业级博客系统的开发记录**</br>- 该项目构建基于 Gradle，目的在于通过博客系统的开发了解企业级开发的完整流程，学习掌握 Spring Boot 及其周边前沿技术。</br>- preview：http://blog.yuzh.xyz
 
 |前端||
 |--------------------|--------------------|
